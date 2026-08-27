@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imora Podcast Studio | Record, film and publish in one room</title>
+<meta name="description" content="The Imora podcast studio — a treated room for multi-camera video podcasts, broadcast audio and same-week delivery. Look around in 3D and see the full kit list.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#050506;
+    --bg-alt:#0d0d10;
+    --cream:#f4ede3;
+    --gold:#c9a76a;
+    --ember:#e8703a;
+    --muted:#8a8578;
+    --line:rgba(244,237,227,0.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);color:var(--cream);
+    font-family:'Inter',sans-serif;font-weight:300;overflow-x:clip;
+  }
+  h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:500;letter-spacing:-0.01em;line-height:1.1;}
+  a{color:inherit;text-decoration:none;}
+  img{display:block;width:100%;height:100%;object-fit:cover;}
+  .container{max-width:1240px;margin:0 auto;padding:0 32px;}
+  section{position:relative;}
+  .eyebrow{font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:18px;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;display:flex;
+    align-items:center;justify-content:space-between;padding:24px 40px;
+    background:linear-gradient(180deg,rgba(5,5,6,.92),rgba(5,5,6,0));
+  }
+  .logo{font-family:'Playfair Display',serif;font-size:22px;letter-spacing:0.08em;font-style:italic;}
+  .nav-right{display:flex;align-items:center;gap:26px;}
+  .nav-right nav{display:flex;gap:28px;}
+  .nav-right nav a{font-size:12px;text-transform:uppercase;letter-spacing:.14em;opacity:.75;transition:opacity .3s;}
+  .nav-right nav a:hover{opacity:1;}
+  .nav-pill{
+    border:1px solid rgba(244,237,227,.35);border-radius:40px;padding:11px 20px;
+    font-size:11px;letter-spacing:.14em;text-transform:uppercase;transition:background .3s,color .3s;
+  }
+  .nav-pill:hover{background:var(--cream);color:var(--bg);}
+
+  /* ---------- HERO ---------- */
+  .p-hero{
+    min-height:88vh;display:flex;align-items:flex-end;
+    padding:180px 0 70px;overflow:hidden;
+    background:
+      radial-gradient(ellipse at 70% 30%, rgba(232,112,58,.13) 0%, transparent 58%),
+      radial-gradient(ellipse at 20% 80%, rgba(201,167,106,.10) 0%, transparent 55%);
+  }
+  .p-hero h1{
+    font-family:'Inter',sans-serif;font-weight:200;
+    font-size:clamp(40px,6.4vw,92px);line-height:1.02;letter-spacing:-0.038em;max-width:15ch;
+  }
+  .p-hero p{margin-top:26px;max-width:520px;font-size:16.5px;line-height:1.7;color:rgba(244,237,227,.78);}
+  .p-tag{
+    display:inline-flex;align-items:center;gap:9px;margin-bottom:26px;
+    border:1px solid var(--line);border-radius:40px;padding:8px 16px;
+    font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);
+  }
+  .p-tag i{width:7px;height:7px;border-radius:50%;background:var(--ember);animation:pulse 2s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.75);}}
+  .p-hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-top:40px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:12px;padding:17px 34px;
+    border:1px solid var(--gold);border-radius:40px;font-size:12px;
+    letter-spacing:.15em;text-transform:uppercase;color:var(--gold);
+    transition:background .35s,color .35s;
+  }
+  .btn:hover{background:var(--gold);color:var(--bg);}
+  .btn.ghost{border-color:var(--line);color:var(--cream);}
+  .btn.ghost:hover{background:var(--cream);color:var(--bg);}
+
+  /* ---------- 360 ROOM ---------- */
+  .room{padding:120px 0 130px;background:var(--bg-alt);}
+  .room-head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;margin-bottom:40px;}
+  .room-head h2{font-size:clamp(30px,3.9vw,50px);max-width:15ch;}
+  .room-head p{max-width:400px;color:var(--muted);font-size:15px;line-height:1.7;}
+  .room-stage{
+    position:relative;border:1px solid var(--line);border-radius:8px;overflow:hidden;
+    aspect-ratio:16/8.6;background:#08080a;cursor:grab;
+  }
+  .room-stage.dragging{cursor:grabbing;}
+  .room-stage canvas{display:block;width:100%;height:100%;}
+  .room-hint{
+    position:absolute;left:50%;bottom:20px;transform:translateX(-50%);
+    display:flex;align-items:center;gap:10px;padding:9px 17px;
+    background:rgba(8,8,10,.72);border:1px solid var(--line);border-radius:40px;
+    font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,237,227,.8);
+    pointer-events:none;transition:opacity .5s ease;
+  }
+  .room-hint.hide{opacity:0;}
+  .room-fallback{
+    position:absolute;inset:0;display:none;align-items:center;justify-content:center;
+    text-align:center;padding:30px;color:var(--muted);font-size:14px;line-height:1.7;
+  }
+  body.no-3d .room-fallback{display:flex;}
+  .room-legend{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:22px;
+  }
+  .room-legend button{
+    background:none;border:1px solid var(--line);border-radius:5px;color:var(--cream);
+    font-family:inherit;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+    padding:14px 12px;cursor:pointer;transition:border-color .3s,background .3s,color .3s;
+  }
+  .room-legend button:hover{border-color:var(--gold);color:var(--gold);}
+
+  /* ---------- CAMERA SETUP ---------- */
+  .setup{padding:130px 0;}
+  .setup-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:60px;}
+  .cam-card{
+    position:relative;padding:34px 30px 30px;border:1px solid var(--line);
+    background:var(--bg-alt);min-height:270px;display:flex;flex-direction:column;
+  }
+  .cam-card .num{font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:auto;}
+  .cam-card h3{font-family:'Inter',sans-serif;font-weight:400;font-size:22px;letter-spacing:-0.02em;margin:34px 0 10px;}
+  .cam-card p{font-size:14px;line-height:1.6;color:var(--muted);}
+  .cam-card .lens{
+    position:absolute;top:26px;right:26px;width:46px;height:46px;border-radius:50%;
+    border:1px solid var(--line);display:flex;align-items:center;justify-content:center;
+  }
+  .cam-card .lens::after{content:'';width:18px;height:18px;border-radius:50%;border:1px solid var(--gold);}
+
+  /* ---------- EQUIPMENT ---------- */
+  .kit{padding:0 0 130px;}
+  .kit-group{border-top:1px solid var(--line);}
+  .kit-row{
+    display:grid;grid-template-columns:190px 1fr auto;gap:30px;align-items:baseline;
+    padding:26px 0;border-bottom:1px solid var(--line);transition:background .3s;
+  }
+  .kit-row:hover{background:rgba(244,237,227,.03);}
+  .kit-row .cat{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);}
+  .kit-row .item{font-size:17px;color:var(--cream);}
+  .kit-row .item span{display:block;font-size:13.5px;color:var(--muted);margin-top:6px;line-height:1.6;}
+  .kit-row .qty{font-size:13px;color:var(--muted);white-space:nowrap;}
+
+  /* ---------- SPECS STRIP ---------- */
+  .specs{background:var(--bg-alt);padding:90px 0;}
+  .specs-in{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;}
+  .specs-in div h4{font-family:'Inter',sans-serif;font-size:34px;font-weight:300;color:var(--gold);letter-spacing:-0.02em;}
+  .specs-in div span{display:block;margin-top:10px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+
+  /* ---------- CTA ---------- */
+  .p-cta{
+    text-align:center;padding:150px 0;
+    background:radial-gradient(ellipse at center, rgba(201,167,106,.09) 0%, transparent 65%);
+  }
+  .p-cta h2{font-size:clamp(34px,5.6vw,70px);font-style:italic;max-width:16ch;margin:0 auto 34px;}
+  .p-cta p{max-width:480px;margin:0 auto 38px;color:var(--muted);font-size:15.5px;line-height:1.7;}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--line);padding:60px 0 36px;}
+  .foot{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;font-size:13px;color:var(--muted);}
+  .foot a:hover{color:var(--cream);}
+
+  /* ---------- WHATSAPP FLOAT ---------- */
+  .wa-float{
+    position:fixed;right:22px;bottom:22px;z-index:200;width:56px;height:56px;
+    border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 26px rgba(0,0,0,.4);transition:transform .3s;
+  }
+  .wa-float:hover{transform:scale(1.07);}
+  .wa-float svg{width:30px;height:30px;fill:#fff;}
+
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s ease,transform .9s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  @media(max-width:980px){
+    .setup-grid{grid-template-columns:1fr;}
+    .specs-in{grid-template-columns:1fr 1fr;gap:26px;}
+    .room-legend{grid-template-columns:1fr 1fr;}
+    .kit-row{grid-template-columns:1fr;gap:8px;}
+    .kit-row .qty{margin-top:4px;}
+    header{padding:18px 20px;}
+    .nav-right nav{display:none;}
+    .container{padding:0 20px;}
+    .room-stage{aspect-ratio:4/4.4;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="imora.html">Imora</a>
+  <div class="nav-right">
+    <nav>
+      <a href="imora.html#work">Work</a>
+      <a href="imora.html#services">Services</a>
+      <a href="imora.html#about">Studio</a>
+    </nav>
+    <a href="#book" class="nav-pill">Book the room</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="p-hero">
+  <div class="container">
+    <div class="p-tag"><i></i> Opening soon</div>
+    <h1>A room built for conversation.</h1>
+    <p>The Imora podcast studio is a fully treated space for recording and filming
+       long-form conversation — multi-camera video, broadcast-grade audio, and lighting
+       that makes people look like themselves.</p>
+    <div class="p-hero-actions">
+      <a href="#book" class="btn wa-link">Register interest ↗</a>
+      <a href="#room" class="btn ghost">Look around the room</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 360 ROOM ============ -->
+<section class="room" id="room">
+  <div class="container">
+    <div class="room-head reveal">
+      <div>
+        <span class="eyebrow">360° View</span>
+        <h2>Stand in the middle and look around.</h2>
+      </div>
+      <p>Drag to turn, scroll to zoom. This is a scale model of the room we're
+         building — desk, treatment, cameras and lighting in their real positions.</p>
+    </div>
+
+    <div class="room-stage" id="stage">
+      <canvas id="room-canvas"></canvas>
+      <div class="room-fallback">
+        Your browser can't render the 3D room.<br>
+        The equipment list below covers everything in it.
+      </div>
+      <div class="room-hint" id="hint">Drag to look around</div>
+    </div>
+
+    <div class="room-legend reveal">
+      <button data-view="0">Host seat</button>
+      <button data-view="1">Guest side</button>
+      <button data-view="2">Camera wall</button>
+      <button data-view="3">Full room</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CAMERA SETUP ============ -->
+<section class="setup">
+  <div class="container">
+    <div class="room-head reveal">
+      <div>
+        <span class="eyebrow">Camera Setup</span>
+        <h2>Three angles, cut live or in post.</h2>
+      </div>
+      <p>Every session records all three feeds separately, so the edit is never
+         locked to one decision made on the day.</p>
+    </div>
+
+    <div class="setup-grid reveal">
+      <div class="cam-card">
+        <div class="num">Cam 01</div>
+        <div class="lens"></div>
+        <h3>Wide master</h3>
+        <p>Locked-off two-shot covering the whole table. The safety angle — always rolling,
+           always usable, and the frame the edit falls back to.</p>
+      </div>
+      <div class="cam-card">
+        <div class="num">Cam 02</div>
+        <div class="lens"></div>
+        <h3>Host close-up</h3>
+        <p>Tighter portrait framing on the host chair, shallow depth of field, set slightly
+           off-axis so eyelines stay natural rather than straight down the barrel.</p>
+      </div>
+      <div class="cam-card">
+        <div class="num">Cam 03</div>
+        <div class="lens"></div>
+        <h3>Guest close-up</h3>
+        <p>Mirrored framing on the guest side. Matched lens and colour profile, so cuts
+           between hosts and guests never jump.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SPECS ============ -->
+<section class="specs">
+  <div class="container specs-in reveal">
+    <div><h4>3</h4><span>Camera angles</span></div>
+    <div><h4>4K</h4><span>Recording resolution</span></div>
+    <div><h4>4</h4><span>Guests seated</span></div>
+    <div><h4>7&nbsp;days</h4><span>Edit turnaround</span></div>
+  </div>
+</section>
+
+<!-- ============ EQUIPMENT ============ -->
+<section class="kit">
+  <div class="container">
+    <div class="room-head reveal" style="padding-top:120px;">
+      <div>
+        <span class="eyebrow">Equipment</span>
+        <h2>What's in the room.</h2>
+      </div>
+      <p>Everything is included in the hire — you bring the conversation.</p>
+    </div>
+
+    <div class="kit-group reveal">
+      <div class="kit-row">
+        <div class="cat">Cameras</div>
+        <div class="item">Canon EOS 5D Mark IV
+          <span>Full-frame bodies on the wide master and both close-ups, matched for colour.</span>
+        </div>
+        <div class="qty">×3</div>
+      </div>
+      <div class="kit-row">
+        <div class="cat">Lenses</div>
+        <div class="item">24–70mm f/2.8 &amp; 85mm f/1.8
+          <span>Zoom on the master for framing flexibility, primes on the close-ups for separation.</span>
+        </div>
+        <div class="qty">×3</div>
+      </div>
+      <div class="kit-row">
+        <div class="cat">Audio</div>
+        <div class="item">Broadcast dynamic microphones on boom arms
+          <span>One per seat, each recorded to its own track so voices can be balanced separately.</span>
+        </div>
+        <div class="qty">×4</div>
+      </div>
+      <div class="kit-row">
+        <div class="cat">Audio</div>
+        <div class="item">Multi-channel audio interface
+          <span>Isolated inputs with backup recording, so a single failure never costs the session.</span>
+        </div>
+        <div class="qty">×1</div>
+      </div>
+      <div class="kit-row">
+        <div class="cat">Lighting</div>
+        <div class="item">Bi-colour LED key and fill panels
+          <span>Softboxed key per seat plus a hair light, dialled to suit skin tone rather than a preset.</span>
+        </div>
+        <div class="qty">×5</div>
+      </div>
+      <div class="kit-row">
+        <div class="cat">Lighting</div>
+        <div class="item">RGB accent tubes
+          <span>Background colour on the treated wall — subtle by default, tunable to brand.</span>
+        </div>
+        <div class="qty">×4</div>
+      </div>
+      <div class="kit-row">
+        <div class="cat">Treatment</div>
+        <div class="item">Broadband acoustic panels and bass traps
+          <span>Wall and corner treatment to kill flutter echo, so the room sounds controlled, not dead.</span>
+        </div>
+        <div class="qty">Full wall</div>
+      </div>
+      <div class="kit-row">
+        <div class="cat">Monitoring</div>
+        <div class="item">Closed-back headphones and a confidence monitor
+          <span>Everyone hears the mix as it's recorded; the host can see framing at all times.</span>
+        </div>
+        <div class="qty">×4</div>
+      </div>
+      <div class="kit-row">
+        <div class="cat">Delivery</div>
+        <div class="item">Edited video and audio masters
+          <span>Cut episode, audio-only master, and vertical clips for social — delivered within the week.</span>
+        </div>
+        <div class="qty">Per session</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="p-cta" id="book">
+  <div class="container">
+    <span class="eyebrow">Opening Soon</span>
+    <h2>Hold a slot for opening week.</h2>
+    <p>Tell us what you're making and roughly when you'd want to record.
+       We'll come back with availability and rates as soon as the room is live.</p>
+    <a href="#" class="btn wa-link">Register interest on WhatsApp ↗</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container foot">
+    <span>© 2026 Imora. Podcast studio opening soon.</span>
+    <span><a href="imora.html">← Back to the photography studio</a></span>
+  </div>
+</footer>
+
+<a class="wa-float wa-link" href="#" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15s-.77.97-.94 1.17c-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.48-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.53-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.38s-1.04 1.02-1.04 2.48 1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.86 9.86 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2z"/></svg>
+</a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ============================================================
+   WHATSAPP — keep this number identical to imora.html
+   ============================================================ */
+var WA_NUMBER = '910000000000';   /* <-- REPLACE with Imora's real WhatsApp number */
+var WA_TEXT   = 'Hi Imora, I would like to enquire about the podcast studio.';
+
+(function(){
+  var digits = String(WA_NUMBER).replace(/\D/g, '');
+  var href = 'https://wa.me/' + digits + '?text=' + encodeURIComponent(WA_TEXT);
+  Array.prototype.forEach.call(document.querySelectorAll('.wa-link'), function(a){
+    a.setAttribute('href', href);
+    a.setAttribute('target', '_blank');
+    a.setAttribute('rel', 'noopener noreferrer');
+  });
+  if(digits === '910000000000'){
+    console.warn('[imora] podcast page: WhatsApp number is still the placeholder.');
+  }
+})();
+
+/* ---------- scroll reveals ---------- */
+(function(){
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.14 });
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+
+/* ============================================================
+   THE ROOM — a scale model you can look around from the inside.
+   The camera sits at head height in the centre and only rotates,
+   which is what makes it read as a 360 view rather than a diorama.
+   ============================================================ */
+(function(){
+  var canvas = document.getElementById('room-canvas');
+  var stage = document.getElementById('stage');
+  var hint = document.getElementById('hint');
+  if(!canvas || !stage) return;
+
+  function webglOK(){
+    try{
+      var c = document.createElement('canvas');
+      return !!(window.WebGLRenderingContext &&
+        (c.getContext('webgl') || c.getContext('experimental-webgl')));
+    }catch(e){ return false; }
+  }
+  if(typeof THREE === 'undefined' || !webglOK()){
+    document.body.classList.add('no-3d');
+    return;
+  }
+
+  var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  var scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x08080a);
+  scene.fog = new THREE.Fog(0x08080a, 9, 22);
+
+  var camera = new THREE.PerspectiveCamera(68, 1, 0.1, 100);
+  camera.position.set(0, 1.55, 0);            /* head height, centre of the room */
+
+  var W = 8, D = 9, H = 3.2;                  /* room in metres */
+
+  /* ---------- materials ---------- */
+  function noiseTex(base, spec, size){
+    var c = document.createElement('canvas');
+    c.width = c.height = size || 256;
+    var x = c.getContext('2d');
+    x.fillStyle = base; x.fillRect(0, 0, c.width, c.height);
+    for(var i = 0; i < 14000; i++){
+      x.fillStyle = 'rgba(' + spec + ',' + (0.03 + Math.random() * 0.16) + ')';
+      x.fillRect(Math.random() * c.width, Math.random() * c.height, 2, 2);
+    }
+    var t = new THREE.CanvasTexture(c);
+    t.wrapS = t.wrapT = THREE.RepeatWrapping;
+    return t;
+  }
+
+  var matFloor = new THREE.MeshStandardMaterial({ color: 0x16161a, roughness: 0.94 });
+  var matCeil  = new THREE.MeshStandardMaterial({ color: 0x0c0c0f, roughness: 1 });
+  var matWall  = new THREE.MeshStandardMaterial({ map: noiseTex('#1a1a1f', '90,88,84'), roughness: 0.95 });
+  var matPanel = new THREE.MeshStandardMaterial({ color: 0x24242a, roughness: 1 });
+  var matDark  = new THREE.MeshStandardMaterial({ color: 0x0e0e11, roughness: 0.7, metalness: 0.25 });
+  var matMetal = new THREE.MeshStandardMaterial({ color: 0x8d9198, roughness: 0.35, metalness: 0.9 });
+  var matWood  = new THREE.MeshStandardMaterial({ color: 0x4a3527, roughness: 0.68 });
+  var matGold  = new THREE.MeshStandardMaterial({ color: 0xc9a76a, roughness: 0.4, metalness: 0.7 });
+
+  function box(w, h, d, mat, x, y, z){
+    var m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat);
+    m.position.set(x, y, z);
+    scene.add(m);
+    return m;
+  }
+  function cyl(rt, rb, h, mat, x, y, z, seg){
+    var m = new THREE.Mesh(new THREE.CylinderGeometry(rt, rb, h, seg || 20), mat);
+    m.position.set(x, y, z);
+    scene.add(m);
+    return m;
+  }
+
+  /* ---------- shell ---------- */
+  var floor = new THREE.Mesh(new THREE.PlaneGeometry(W, D), matFloor);
+  floor.rotation.x = -Math.PI / 2; scene.add(floor);
+
+  var ceil = new THREE.Mesh(new THREE.PlaneGeometry(W, D), matCeil);
+  ceil.rotation.x = Math.PI / 2; ceil.position.y = H; scene.add(ceil);
+
+  [[0, H/2, -D/2, 0], [0, H/2, D/2, Math.PI], [-W/2, H/2, 0, Math.PI/2], [W/2, H/2, 0, -Math.PI/2]]
+    .forEach(function(w){
+      var wall = new THREE.Mesh(new THREE.PlaneGeometry(w[3] % Math.PI === 0 ? W : D, H), matWall);
+      wall.position.set(w[0], w[1], w[2]);
+      wall.rotation.y = w[3];
+      scene.add(wall);
+    });
+
+  /* ---------- acoustic treatment on the back wall ---------- */
+  for(var px = -3; px <= 3; px += 1.0){
+    for(var py = 0; py < 3; py++){
+      var p = box(0.86, 0.72, 0.09, matPanel, px, 0.85 + py * 0.8, -D/2 + 0.06);
+      p.rotation.z = (px + py) % 2 ? 0 : Math.PI / 2;
+    }
+  }
+  /* corner bass traps */
+  [[-W/2 + 0.35, -D/2 + 0.35], [W/2 - 0.35, -D/2 + 0.35]].forEach(function(c){
+    cyl(0.28, 0.28, H, matPanel, c[0], H/2, c[1], 12);
+  });
+
+  /* ---------- table ---------- */
+  box(2.6, 0.09, 1.25, matWood, 0, 0.74, -0.2);
+  [[-1.15, -0.7], [1.15, -0.7], [-1.15, 0.3], [1.15, 0.3]].forEach(function(l){
+    cyl(0.05, 0.05, 0.74, matDark, l[0], 0.37, l[1] - 0.2, 10);
+  });
+
+  /* ---------- four seats around the table ---------- */
+  var seats = [[-0.85, 0.75], [0.85, 0.75], [-0.85, -1.2], [0.85, -1.2]];
+  seats.forEach(function(s){
+    box(0.52, 0.08, 0.5, matDark, s[0], 0.45, s[1]);          /* seat pad */
+    box(0.52, 0.62, 0.08, matDark, s[0], 0.78, s[1] + (s[1] > 0 ? 0.22 : -0.22)); /* back */
+    cyl(0.05, 0.05, 0.45, matMetal, s[0], 0.22, s[1], 10);    /* stem */
+    cyl(0.26, 0.26, 0.03, matMetal, s[0], 0.02, s[1], 14);    /* base */
+  });
+
+  /* ---------- microphones on boom arms ---------- */
+  seats.forEach(function(s){
+    var dir = s[1] > 0 ? -1 : 1;
+    var arm = box(0.045, 0.045, 0.85, matDark, s[0], 1.16, s[1] + dir * 0.42);
+    arm.rotation.x = dir * 0.32;
+    var mic = cyl(0.05, 0.062, 0.2, matDark, s[0], 1.02, s[1] + dir * 0.74, 14);
+    mic.rotation.x = dir * 0.85;
+    cyl(0.058, 0.058, 0.02, matGold, s[0], 0.94, s[1] + dir * 0.8, 14);
+  });
+
+  /* ---------- three cameras on stands ---------- */
+  var cams = [
+    { x: 0,     z: 2.9,  ry: Math.PI },        /* wide master */
+    { x: -2.2,  z: 1.9,  ry: Math.PI - 0.62 }, /* host close-up */
+    { x: 2.2,   z: 1.9,  ry: Math.PI + 0.62 }  /* guest close-up */
+  ];
+  cams.forEach(function(c){
+    cyl(0.035, 0.035, 1.35, matMetal, c.x, 0.68, c.z, 10);
+    [0, 2.1, 4.2].forEach(function(a){
+      var leg = cyl(0.02, 0.02, 0.8, matMetal, c.x + Math.sin(a) * 0.22, 0.33, c.z + Math.cos(a) * 0.22, 8);
+      leg.rotation.z = Math.sin(a) * 0.3;
+      leg.rotation.x = Math.cos(a) * 0.3;
+    });
+    var body = box(0.3, 0.21, 0.19, matDark, c.x, 1.45, c.z);
+    body.rotation.y = c.ry;
+    var lensGrp = new THREE.Group();
+    var lens = cyl(0.075, 0.085, 0.26, matDark, 0, 0, -0.2, 20);
+    lens.rotation.x = Math.PI / 2;
+    var ring = cyl(0.088, 0.088, 0.03, matMetal, 0, 0, -0.33, 20);
+    ring.rotation.x = Math.PI / 2;
+    lensGrp.add(lens); lensGrp.add(ring);
+    lensGrp.position.set(c.x, 1.45, c.z);
+    lensGrp.rotation.y = c.ry;
+    scene.add(lensGrp);
+    /* tally light */
+    var tally = cyl(0.014, 0.014, 0.012, new THREE.MeshStandardMaterial({
+      color: 0xe8703a, emissive: 0xe8703a, emissiveIntensity: 2.4
+    }), c.x, 1.57, c.z, 10);
+    tally.rotation.x = Math.PI / 2;
+  });
+
+  /* ---------- lighting rig ---------- */
+  function softbox(x, z, tint, power){
+    var panel = box(0.86, 0.86, 0.07, new THREE.MeshStandardMaterial({
+      color: 0xffffff, emissive: tint, emissiveIntensity: 1.5
+    }), x, 2.42, z);
+    panel.lookAt(0, 1.2, -0.2);
+    var l = new THREE.PointLight(tint, power, 12, 2);
+    l.position.set(x, 2.35, z);
+    scene.add(l);
+    cyl(0.02, 0.02, 0.75, matMetal, x, 2.82, z, 8);
+  }
+  softbox(-1.9, 1.7, 0xfff2e0, 12);
+  softbox(1.9, 1.7, 0xfff2e0, 12);
+  softbox(0, -2.6, 0xffe9d0, 8);
+
+  /* RGB accent tubes on the treated wall */
+  [-2.6, -1.3, 1.3, 2.6].forEach(function(x, i){
+    var col = i % 2 ? 0xc9a76a : 0xe8703a;
+    var tube = box(0.06, 1.7, 0.06, new THREE.MeshStandardMaterial({
+      color: col, emissive: col, emissiveIntensity: 2.2
+    }), x, 1.5, -D/2 + 0.16);
+    var pl = new THREE.PointLight(col, 3.2, 6, 2);
+    pl.position.set(x, 1.5, -D/2 + 0.5);
+    scene.add(pl);
+  });
+
+  /* confidence monitor */
+  var mon = box(1.0, 0.58, 0.05, new THREE.MeshStandardMaterial({
+    color: 0x0a0a0c, emissive: 0x24303c, emissiveIntensity: 0.85
+  }), 0, 1.75, D/2 - 0.12);
+  mon.rotation.y = Math.PI;
+
+  scene.add(new THREE.AmbientLight(0xffffff, 0.34));
+  var bounce = new THREE.HemisphereLight(0xbfd0e8, 0x201a14, 0.5);
+  scene.add(bounce);
+
+  /* ---------- look-around controls ---------- */
+  var yaw = Math.PI, pitch = -0.04, tYaw = Math.PI, tPitch = -0.04;
+  var fov = 68, tFov = 68;
+  var dragging = false, lx = 0, ly = 0, touched = false;
+
+  function hideHint(){
+    if(touched) return;
+    touched = true;
+    if(hint) hint.classList.add('hide');
+  }
+
+  stage.addEventListener('pointerdown', function(e){
+    dragging = true; lx = e.clientX; ly = e.clientY;
+    stage.classList.add('dragging');
+    stage.setPointerCapture(e.pointerId);
+    hideHint();
+  });
+  stage.addEventListener('pointermove', function(e){
+    if(!dragging) return;
+    tYaw   -= (e.clientX - lx) * 0.0042;
+    tPitch -= (e.clientY - ly) * 0.0034;
+    tPitch = Math.max(-0.62, Math.min(0.55, tPitch));
+    lx = e.clientX; ly = e.clientY;
+  });
+  ['pointerup','pointercancel','pointerleave'].forEach(function(ev){
+    stage.addEventListener(ev, function(){
+      dragging = false; stage.classList.remove('dragging');
+    });
+  });
+  stage.addEventListener('wheel', function(e){
+    e.preventDefault();
+    tFov = Math.max(38, Math.min(88, tFov + e.deltaY * 0.045));
+  }, { passive: false });
+
+  /* preset viewpoints from the legend buttons */
+  var views = [
+    { yaw: Math.PI * 0.72, pitch: -0.05, fov: 62 },   /* host seat */
+    { yaw: Math.PI * 1.28, pitch: -0.05, fov: 62 },   /* guest side */
+    { yaw: 0,              pitch: 0.02,  fov: 66 },   /* camera wall */
+    { yaw: Math.PI,        pitch: -0.06, fov: 84 }    /* full room */
+  ];
+  document.querySelectorAll('.room-legend button').forEach(function(b){
+    b.addEventListener('click', function(){
+      var v = views[+b.dataset.view] || views[3];
+      tYaw = v.yaw; tPitch = v.pitch; tFov = v.fov;
+      hideHint();
+    });
+  });
+
+  function resize(){
+    var w = stage.clientWidth, h = stage.clientHeight;
+    if(!w || !h) return;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  var idle = 0;
+  (function loop(){
+    requestAnimationFrame(loop);
+
+    /* a slow drift before the first interaction, so it reads as alive */
+    if(!touched){ idle += 0.0016; tYaw = Math.PI + Math.sin(idle) * 0.32; }
+
+    yaw   += (tYaw - yaw) * 0.075;
+    pitch += (tPitch - pitch) * 0.075;
+    fov   += (tFov - fov) * 0.09;
+
+    camera.fov = fov;
+    camera.updateProjectionMatrix();
+    camera.rotation.set(0, 0, 0, 'YXZ');
+    camera.rotation.order = 'YXZ';
+    camera.rotation.y = yaw;
+    camera.rotation.x = pitch;
+
+    renderer.render(scene, camera);
+  })();
+})();
+</script>
+
+</body>
+</html>

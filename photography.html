@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imora | Photography &amp; Videography</title>
+<meta name="description" content="Imora shoots weddings, portraits, product, events, commercial work and film — made for clarity, patience and feeling.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="preloader">
+  <span class="preloader-logo">Imora</span>
+  <div class="preloader-bar"><div class="preloader-fill"></div></div>
+  <span class="preloader-count">0</span>
+</div>
+
+<div class="cursor-dot"></div>
+<div class="cursor-outline"><span class="cursor-label">View</span></div>
+<div class="noise-overlay"></div>
+
+<!-- WhatsApp: number is set once in the WA_NUMBER constant at the top of main.js -->
+<a class="wa-float wa-link" href="#" data-label="Chat on WhatsApp" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.08-.3-.15-1.25-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.62-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.06 2.87 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.010-1.41.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35M12.04 21.5h-.01a9.4 9.4 0 01-4.79-1.31l-.34-.2-3.56.93.95-3.47-.22-.36a9.38 9.38 0 01-1.44-5.01c0-5.19 4.23-9.41 9.42-9.41 2.51 0 4.88.98 6.65 2.76a9.35 9.35 0 012.75 6.66c0 5.19-4.22 9.41-9.41 9.41m8.01-17.42A11.28 11.28 0 0012.04.75C5.81.75.75 5.81.75 12.03c0 1.99.52 3.93 1.51 5.64L.66 23.25l5.72-1.5a11.26 11.26 0 005.65 1.44h.01c6.22 0 11.28-5.06 11.29-11.28 0-3.02-1.17-5.85-3.3-7.98"/></svg>
+</a>
+
+<canvas class="bg-canvas"></canvas>
+
+<header>
+  <a class="logo" href="index.html">Imora</a>
+  <div class="nav-right">
+    <nav>
+      <ul>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#about">Studio</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#video">Video</a></li>
+        <li><a href="studio.html">Studio Hire</a></li>
+      </ul>
+    </nav>
+    <a href="#contact" class="nav-pill">Let's Talk</a>
+  </div>
+</header>
+
+<!-- ============ 3D ZONE: the camera mark lives behind all of this ============ -->
+<div class="stage" id="zone3d">
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <h1 class="hero-title">Moments, held a little longer.</h1>
+        <a href="#contact" class="hero-cta">Start a Project <span class="arrow">&rarr;</span></a>
+      </div>
+      <div class="hero-foot">
+        <div class="hero-hint">
+          Hold to <b>&#10022;</b> blast<br>
+          Move to <b>&#9889;</b> bend the lines
+        </div>
+        <div class="hero-meta">
+          <div class="hero-badge">
+            <div>Est. 2016</div>
+            <div>9+ years<br>behind the lens</div>
+          </div>
+          <p>Weddings, portraits, product, events, commercials and film &mdash; shot for clarity, patience and feeling.</p>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">&darr;</div>
+  </section>
+
+  <section class="statement">
+    <span class="statement-label">About</span>
+    <p class="statement-text" data-words>Imora is an independent photography studio making images that hold their weight — through patience, light, and restraint.</p>
+  </section>
+
+  <section class="values">
+    <div class="values-rule"><div></div></div>
+    <div class="values-grid">
+      <div>
+        <h4>We shoot for permanence.<br>Light first, patience always,<br>edited to last.</h4>
+      </div>
+      <div class="values-right">
+        <p>Our aim is to make photographs that still mean something in twenty years — honest, unhurried, and made for the people in them.</p>
+        <a href="#about" class="values-link">More about us <span>&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="big-marquee">
+    <div class="bm-top">Focused vision.<br>Measured execution.</div>
+    <div class="bm-track">
+      <span>Observe <i>&#43;</i> Compose <i>&#43;</i> Remember <i>&#43;</i></span>
+      <span>Observe <i>&#43;</i> Compose <i>&#43;</i> Remember <i>&#43;</i></span>
+    </div>
+    <div class="bm-foot"><b>&#10022;</b> From fleeting to permanent.</div>
+  </section>
+
+</div>
+
+<!-- ============ opaque lower page ============ -->
+<div class="page-solid">
+
+<div class="marquee-wrap">
+  <div class="marquee">
+    <span><em>Wedding</em>Imora<em>Portrait</em>Imora<em>Product</em>Imora<em>Event</em>Imora<em>Commercial</em>Imora<em>Video</em>Imora<em>Wedding</em>Imora<em>Portrait</em>Imora<em>Product</em>Imora<em>Event</em>Imora<em>Commercial</em>Imora<em>Video</em>Imora</span>
+  </div>
+</div>
+
+<section id="about" class="section-pad">
+  <div class="container about-grid">
+    <div class="about-img">
+      <img src="https://images.unsplash.com/photo-1554048612-b6a482bc67e5?auto=format&fit=crop&w=900&q=80" alt="Photographer at work">
+    </div>
+    <div class="about-text">
+      <span class="eyebrow">The Studio</span>
+      <h2 style="font-size:clamp(28px,3.5vw,42px);margin-bottom:24px;">We photograph the moments people go back to.</h2>
+      <p>Imora is an independent studio working across weddings, portraits, product, events, commercial work and film. Every project starts the same way — by listening, then looking for the frame that says the most with the least.</p>
+      <p>No two shoots look alike, but every one carries the same restraint: natural light where we can get it, honest composition, and a final edit that feels like memory rather than performance.</p>
+      <div class="about-stats">
+        <div><h3>9+</h3><span>Years Shooting</span></div>
+        <div><h3>420+</h3><span>Projects Delivered</span></div>
+        <div><h3>30+</h3><span>Cities Covered</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work" class="section-pad" style="background:var(--bg-alt);">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">What We Shoot</span>
+        <h2>Six services, one eye for the honest frame.</h2>
+      </div>
+      <p>From full wedding days and intimate portrait sessions to product sets, live events, commercial campaigns and motion.</p>
+    </div>
+    <div class="genre-grid">
+      <div class="genre-card">
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=700&q=80" alt="Wedding photography">
+        <div class="genre-overlay"><span>01</span><h3>Wedding</h3></div>
+      </div>
+      <div class="genre-card">
+        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=700&q=80" alt="Portrait photography">
+        <div class="genre-overlay"><span>02</span><h3>Portrait</h3></div>
+      </div>
+      <div class="genre-card">
+        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80" alt="Product photography">
+        <div class="genre-overlay"><span>03</span><h3>Product</h3></div>
+      </div>
+      <div class="genre-card">
+        <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=700&q=80" alt="Event photography">
+        <div class="genre-overlay"><span>04</span><h3>Event</h3></div>
+      </div>
+      <div class="genre-card">
+        <img src="https://images.unsplash.com/photo-1533928298208-27ff66555d8d?auto=format&fit=crop&w=700&q=80" alt="Commercial photography">
+        <div class="genre-overlay"><span>05</span><h3>Commercial</h3></div>
+      </div>
+      <div class="genre-card">
+        <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=700&q=80" alt="Videography">
+        <div class="genre-overlay"><span>06</span><h3>Videography</h3></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KEY FACTS — cards tilt in on a 3D plane ============ -->
+<section class="kf">
+  <div class="kf-head">
+    <h2>Key facts</h2>
+    <p>A snapshot of our<br>experience and impact.</p>
+  </div>
+  <div class="kf-grid">
+    <div class="kf-card dark">
+      <div class="kf-media"><img src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?auto=format&fit=crop&w=700&q=80" alt="Awards"></div>
+      <div class="kf-label">Featured &amp; Awards</div>
+      <div class="kf-bottom">
+        <p>Featured on top photography platforms worldwide.</p>
+        <div class="kf-num">50<sup>+</sup></div>
+      </div>
+    </div>
+    <div class="kf-card light">
+      <div class="kf-label">Shoots Completed</div>
+      <div class="kf-circle">1.5K<sup style="font-size:.45em;vertical-align:super;">+</sup></div>
+      <div class="kf-label" style="max-width:80%;margin:0 auto;text-transform:none;letter-spacing:0;font-size:14px;line-height:1.45;">90% of our clients book us again within the year.</div>
+    </div>
+    <div class="kf-card dark">
+      <div class="kf-media"><img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=700&q=80" alt="Team"></div>
+      <div class="kf-label">Our Team</div>
+      <div class="kf-bottom">
+        <p>Different eyes.<br>One standard.</p>
+        <div class="kf-num">20<sup>+</sup></div>
+      </div>
+    </div>
+  </div>
+  <div class="kf-partners">
+    <span>Trusted By</span>
+    <div class="kf-logos">
+      <b>Lumen</b><b>Vestra</b><b>Northbound</b><b>Atelier&nbsp;9</b><b>Solace</b>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SELECTED WORK — horizontal scroll ============ -->
+<section class="hwork">
+  <div class="hwork-inner">
+    <div class="hwork-lead">
+      <h2>Selected work<br>&amp; explorations</h2>
+      <a href="#">View all projects <span>&rarr;</span></a>
+    </div>
+    <div class="hwork-item">
+      <figure><img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80" alt="Wedding story"></figure>
+      <h3>The Mehta Wedding</h3>
+      <div class="hwork-meta">
+        <p>Two days in Udaipur, shot as one continuous story.</p>
+        <a href="#">Explore project <span>&rarr;</span></a>
+      </div>
+    </div>
+    <div class="hwork-item">
+      <figure><img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1200&q=80" alt="Product campaign"></figure>
+      <h3>Studio Nine</h3>
+      <div class="hwork-meta">
+        <p>A product campaign built on hard light and clean edges.</p>
+        <a href="#">Explore project <span>&rarr;</span></a>
+      </div>
+    </div>
+    <div class="hwork-item">
+      <figure><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80" alt="Travel editorial"></figure>
+      <h3>Northbound</h3>
+      <div class="hwork-meta">
+        <p>Six weeks on the road, shot for a travel publication.</p>
+        <a href="#">Explore project <span>&rarr;</span></a>
+      </div>
+    </div>
+    <div class="hwork-item">
+      <figure><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1200&q=80" alt="Portrait series"></figure>
+      <h3>Quiet Portraits</h3>
+      <div class="hwork-meta">
+        <p>An ongoing series on people photographed without a brief.</p>
+        <a href="#">Explore project <span>&rarr;</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STONE — lens drops, type scatters, cards fly in ============ -->
+<section class="stone" id="services">
+  <div class="stone-sticky">
+    <canvas class="stone-canvas"></canvas>
+
+    <div class="svc-card c1">
+      <h4>Wedding <i>01</i></h4>
+      <p>Full-day coverage from getting-ready to reception, delivered as one considered, editorial story.</p>
+    </div>
+    <div class="svc-card c2">
+      <h4>Portrait <i>02</i></h4>
+      <p>Individual, couple and family portraits shot on location or in studio, with a natural, unposed feel.</p>
+    </div>
+    <div class="svc-card c3">
+      <h4>Product <i>03</i></h4>
+      <p>Clean, considered product sets built on controlled light and honest colour.</p>
+    </div>
+    <div class="svc-card c4">
+      <h4>Event <i>04</i></h4>
+      <p>Live coverage of launches, functions and corporate days — unobtrusive, and delivered fast.</p>
+    </div>
+    <div class="svc-card c5">
+      <h4>Commercial <i>05</i></h4>
+      <p>Campaign and brand imagery made to work across print, social and everything in between.</p>
+    </div>
+    <div class="svc-card c6">
+      <h4>Videography <i>06</i></h4>
+      <p>Films and motion work — wedding films, brand pieces and social cuts, shot and graded in house.</p>
+    </div>
+
+    <div class="stone-ui">
+      <div class="stone-label">Our Services</div>
+      <div class="stone-type">
+        <div class="st-line">Wedding</div>
+        <div class="st-line">Portrait</div>
+        <div class="st-line">Product</div>
+        <div class="st-line">Event</div>
+        <div class="st-line">Commercial</div>
+        <div class="st-line">Videography</div>
+      </div>
+      <div class="stone-foot">&#10022; Different disciplines. One standard of craft.</div>
+      <a href="#contact" class="stone-link">View services <span>&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad" style="background:var(--bg-alt);">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">What's Included</span>
+        <h2>Book Imora for your next shoot.</h2>
+      </div>
+      <p>Every package is shaped around the story you're trying to tell — not the other way around.</p>
+    </div>
+    <div class="services-list">
+      <div class="service-row">
+        <span class="service-num">01</span><h3>Wedding</h3>
+        <p>Full-day coverage from getting-ready to reception, delivered as one continuous story.</p>
+        <div class="service-arrow">↗</div>
+      </div>
+      <div class="service-row">
+        <span class="service-num">02</span><h3>Portrait</h3>
+        <p>Individual, couple and family portraits on location or in studio, with a natural, unposed feel.</p>
+        <div class="service-arrow">↗</div>
+      </div>
+      <div class="service-row">
+        <span class="service-num">03</span><h3>Product</h3>
+        <p>Clean, considered product sets built on controlled light and honest colour.</p>
+        <div class="service-arrow">↗</div>
+      </div>
+      <div class="service-row">
+        <span class="service-num">04</span><h3>Event</h3>
+        <p>Launches, functions and corporate days covered unobtrusively and turned around fast.</p>
+        <div class="service-arrow">↗</div>
+      </div>
+      <div class="service-row">
+        <span class="service-num">05</span><h3>Commercial</h3>
+        <p>Campaign and brand imagery made to work across print, social and everything between.</p>
+        <div class="service-arrow">↗</div>
+      </div>
+      <div class="service-row">
+        <span class="service-num">06</span><h3>Videography</h3>
+        <p>Wedding films, brand pieces and social cuts — shot, edited and graded in house.</p>
+        <div class="service-arrow">↗</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Kind Words</span>
+        <h2>What clients say after the shoot.</h2>
+      </div>
+    </div>
+    <div class="testi-track">
+      <div class="testi-card">
+        <p>"Imora photographed our wedding and somehow disappeared into the day — the photos feel like we're back there. Every frame is exactly how it felt."</p>
+        <div class="testi-person">
+          <div class="testi-avatar"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=100&q=80" alt="Client"></div>
+          <div><strong>Ananya Mehta</strong><span>Wedding Client</span></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <p>"Our product shoot needed to feel premium without trying too hard. Imora nailed the brief in one session — clean, considered, on brand."</p>
+        <div class="testi-person">
+          <div class="testi-avatar"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80" alt="Client"></div>
+          <div><strong>Rohan Kapoor</strong><span>Founder, Studio Nine</span></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <p>"I've done a lot of portrait sessions and always felt stiff on camera. This was the first time I actually looked like myself in the photos."</p>
+        <div class="testi-person">
+          <div class="testi-avatar"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100&q=80" alt="Client"></div>
+          <div><strong>Priya Shah</strong><span>Portrait Client</span></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <p>"Professional, unobtrusive, and fast to deliver. Our campaign shots have outperformed everything else we shot this year."</p>
+        <div class="testi-person">
+          <div class="testi-avatar"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=100&q=80" alt="Client"></div>
+          <div><strong>Devika Rao</strong><span>Marketing Lead</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FRAMES IN MOTION — curved arc of frames ============ -->
+<section class="motion">
+  <div class="motion-sticky">
+    <svg class="motion-guides" viewBox="0 0 1600 900" preserveAspectRatio="none">
+      <path d="M 240 760 Q 700 300 1500 470"></path>
+      <path d="M 300 880 Q 820 420 1560 560"></path>
+      <path d="M 700 120 Q 1050 60 1400 210"></path>
+    </svg>
+
+    <h2 class="motion-t motion-t1">Frames in</h2>
+    <h2 class="motion-t motion-t2">Motion</h2>
+    <p class="motion-mid">Exploring light through<br>daily practice.</p>
+    <p class="motion-note">Tests, outtakes and frame studies shared openly as part of how we work.</p>
+    <a href="#" class="motion-link">View the journal <span>&rarr;</span></a>
+
+    <div class="wheel">
+      <div class="wcard"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80" alt="Frame study"></div>
+      <div class="wcard"><img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=600&q=80" alt="Frame study"></div>
+      <div class="wcard"><img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80" alt="Frame study"></div>
+      <div class="wcard"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80" alt="Frame study"></div>
+      <div class="wcard"><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=600&q=80" alt="Frame study"></div>
+      <div class="wcard"><img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=600&q=80" alt="Frame study"></div>
+      <div class="wcard"><img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=600&q=80" alt="Frame study"></div>
+      <div class="wcard"><img src="https://images.unsplash.com/photo-1529636798458-92182e662485?auto=format&fit=crop&w=600&q=80" alt="Frame study"></div>
+      <div class="wcard"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80" alt="Frame study"></div>
+      <div class="wcard"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80" alt="Frame study"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ …and settles into a grid ============ -->
+<section class="mgrid">
+  <div class="mgrid-in">
+    <figure><img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" alt="Frame study"></figure>
+    <figure><img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=800&q=80" alt="Frame study"></figure>
+    <figure><img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80" alt="Frame study"></figure>
+    <figure><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80" alt="Frame study"></figure>
+    <figure><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80" alt="Frame study"></figure>
+    <figure><img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=800&q=80" alt="Frame study"></figure>
+  </div>
+  <div class="mgrid-foot">
+    <p>Tests, outtakes and frame studies shared openly as part of how we work.</p>
+    <a href="#">View the journal <span>&rarr;</span></a>
+  </div>
+</section>
+
+<!-- ============ VIDEOGRAPHY — showreel + video services ============ -->
+<section class="reel" id="video">
+  <div class="container">
+    <div class="reel-head">
+      <div>
+        <span class="eyebrow">Videography</span>
+        <h2>Some moments need to move.</h2>
+      </div>
+      <p>The same eye, running at 24 frames a second. Shot, edited and graded
+         in house, so the film and the photographs feel like one body of work.</p>
+    </div>
+
+    <!-- SHOWREEL
+         To use a real film, see README section 4.
+         The poster image below is a placeholder. -->
+    <div class="reel-stage" id="showreel" data-video="">
+      <div class="reel-poster">
+        <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1600&q=80" alt="Showreel">
+      </div>
+      <div class="reel-veil"></div>
+      <div class="reel-play" aria-label="Play showreel" role="button" tabindex="0"></div>
+      <div class="reel-caption">Showreel &mdash; coming soon</div>
+    </div>
+    <p class="reel-note">Placeholder. Drop your reel in and this plays inline &mdash; see README section 4.</p>
+
+    <div class="reel-grid">
+      <div class="reel-card">
+        <div class="num">01</div>
+        <h3>Wedding films</h3>
+        <p>The day as it actually unfolded — vows, speeches and the quiet gaps
+           between them, cut to breathe rather than to a trailer template.</p>
+        <ul>
+          <li>Highlight film</li>
+          <li>Full ceremony &amp; speeches</li>
+          <li>Social cutdowns</li>
+        </ul>
+      </div>
+      <div class="reel-card">
+        <div class="num">02</div>
+        <h3>Brand films</h3>
+        <p>Founder stories, product pieces and campaign films made to sit on a
+           homepage and still hold up two years later.</p>
+        <ul>
+          <li>Concept &amp; treatment</li>
+          <li>Direction &amp; shoot</li>
+          <li>Edit, grade &amp; sound</li>
+        </ul>
+      </div>
+      <div class="reel-card">
+        <div class="num">03</div>
+        <h3>Social reels</h3>
+        <p>Vertical cuts built for the feed — shot properly rather than salvaged
+           from footage framed for something else.</p>
+        <ul>
+          <li>9:16 native capture</li>
+          <li>Captions &amp; sound design</li>
+          <li>Batch delivery</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="cta">
+  <div class="container">
+    <span class="eyebrow">Let's Talk</span>
+    <h2>Ready to make<br>your next memory?</h2>
+    <a href="#" class="btn wa-link">Book on WhatsApp ↗</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Imora</div>
+        <p>Photography and film for weddings, portraits, product, events and brands — based in India, shooting worldwide.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Work</h4>
+        <ul><li><a href="#work">What We Shoot</a></li><li><a href="#services">Services</a></li><li><a href="#video">Videography</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>Elsewhere</h4>
+        <ul><li><a href="studio.html">Studio Hire</a></li><li><a href="index.html">Home</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul><li><a href="mailto:hello@imora.studio">hello@imora.studio</a></li><li><a href="tel:+910000000000">+91 00000 00000</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Imora Photography Studio. All rights reserved.</span>
+      <span>Photography &amp; Videography</span>
+    </div>
+  </div>
+</footer>
+
+</div><!-- /page-solid -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/DRACOLoader.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="main.js"></script>
+
+</body>
+</html>

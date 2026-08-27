@@ -1,0 +1,9 @@
+# Browser download cache artifacts — not part of the site
+*.js.download
+0sc3z3ff25230.css
+0wf1gwg29cqjw.css
+0xt8hh0aijjr~.css
+js
+
+# macOS
+.DS_Store
