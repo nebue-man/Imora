@@ -7,6 +7,8 @@ import HeroSection from '@/components/photography/HeroSection'
 import StatementSection from '@/components/photography/StatementSection'
 import ValuesSection from '@/components/photography/ValuesSection'
 import MarqueeSection from '@/components/photography/MarqueeSection'
+import AboutSection from '@/components/photography/AboutSection'
+import ServicesGridSection from '@/components/photography/ServicesGridSection'
 
 const HeroBg = dynamic(
   () => import('@/components/photography/HeroBg'),
@@ -38,7 +40,9 @@ export default function PhotographyPage() {
       </div>
 
       <div className="page-solid">
-        {/* sections added in tasks 11-15 */}
+        <AboutSection />
+        <ServicesGridSection />
+        {/* sections added in tasks 12-15 */}
       </div>
     </>
   )
