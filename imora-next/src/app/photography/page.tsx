@@ -14,6 +14,9 @@ import HorizontalWorkSection from '@/components/photography/HorizontalWorkSectio
 import InclusionsSection from '@/components/photography/InclusionsSection'
 import TestimonialsSection from '@/components/photography/TestimonialsSection'
 import FramesInMotionSection from '@/components/photography/FramesInMotionSection'
+import VideoSection from '@/components/photography/VideoSection'
+import CtaSection from '@/components/photography/CtaSection'
+import Footer from '@/components/shared/Footer'
 
 const HeroBg = dynamic(
   () => import('@/components/photography/HeroBg'),
@@ -58,7 +61,19 @@ export default function PhotographyPage() {
         <InclusionsSection />
         <TestimonialsSection />
         <FramesInMotionSection />
-        {/* sections added in task 15 */}
+        <VideoSection />
+        <CtaSection />
+        <Footer
+          tagline="Photography and film for weddings, portraits, product, events and brands — based in India, shooting worldwide."
+          colTwoTitle="Work"
+          colTwoLinks={[
+            { label: 'What We Shoot', href: '#work' },
+            { label: 'Services', href: '#services' },
+            { label: 'Videography', href: '#video' },
+          ]}
+          copyright="© 2026 Imora Photography Studio. All rights reserved."
+          subtitle="Photography & Videography"
+        />
       </div>
     </>
   )
