@@ -1,0 +1,28 @@
+- generic [active] [ref=f6e1]:
+  - generic [ref=f6e2]:
+    - generic [ref=f6e3]: Imora
+    - generic [ref=f6e5]: "0"
+  - link "Chat on WhatsApp" [ref=f6e6]:
+    - /url: https://wa.me/910000000000?text=Hi%20Imora%2C%20I%20would%20like%20to%20enquire%20about%20a%20shoot.
+  - generic [ref=f6e9]:
+    - generic: Imora
+    - link "Photography and film 01 — We shoot Photography & Videography Weddings, portraits, product, events, commercial work and film. Made for clarity, patience and feeling. Enter →" [ref=f6e10]:
+      - /url: photography.html
+      - img "Photography and film" [ref=f6e12]
+      - generic [ref=f6e13]:
+        - generic [ref=f6e14]: 01 — We shoot
+        - heading "Photography & Videography" [level=2] [ref=f6e15]: Photography& Videography
+        - paragraph [ref=f6e16]: Weddings, portraits, product, events, commercial work and film. Made for clarity, patience and feeling.
+        - generic [ref=f6e17]:
+          - text: Enter
+          - generic [ref=f6e18]: →
+    - link "Studio services 02 — We host Studio Services A fully treated room for podcasts and long-form conversation — multi-camera, broadcast audio, same-week delivery. Enter →" [ref=f6e19]:
+      - /url: studio.html
+      - img "Studio services" [ref=f6e21]
+      - generic [ref=f6e22]:
+        - generic [ref=f6e23]: 02 — We host
+        - heading "Studio Services" [level=2] [ref=f6e24]: StudioServices
+        - paragraph [ref=f6e25]: A fully treated room for podcasts and long-form conversation — multi-camera, broadcast audio, same-week delivery.
+        - generic [ref=f6e26]:
+          - text: Enter
+          - generic [ref=f6e27]: →

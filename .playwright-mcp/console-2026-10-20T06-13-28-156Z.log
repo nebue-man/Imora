@@ -1,0 +1,3 @@
+[      78ms] [WARNING] [imora] WhatsApp links point at a placeholder number. Set WA_NUMBER at the top of main.js. @ http://localhost:8765/main.js:31
+[     430ms] [INFO] [imora] services model loaded: camera_lens.glb @ http://localhost:8765/main.js:1144
+[     434ms] [INFO] [imora] camera model loaded — swapping out the placeholder. @ http://localhost:8765/main.js:599

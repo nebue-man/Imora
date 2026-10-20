@@ -1,0 +1,2 @@
+[      63ms] [WARNING] [imora] WhatsApp links point at a placeholder number. Set WA_NUMBER at the top of main.js. @ http://localhost:8765/main.js:31
+[     110ms] [WARNING] GSAP target undefined not found. https://gsap.com @ https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js:9

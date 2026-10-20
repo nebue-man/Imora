@@ -1,0 +1,597 @@
+- generic [active] [ref=f4e1]:
+  - generic [ref=f4e2]:
+    - generic [ref=f4e3]: Imora
+    - generic [ref=f4e6]: "5"
+  - generic: View
+  - link "Chat on WhatsApp" [ref=f4e7]:
+    - /url: https://wa.me/910000000000?text=Hi%20Imora%2C%20I%20would%20like%20to%20enquire%20about%20a%20shoot.
+  - banner [ref=f4e10]:
+    - link "Imora" [ref=f4e11]:
+      - /url: index.html
+    - generic [ref=f4e12]:
+      - navigation [ref=f4e13]:
+        - list [ref=f4e14]:
+          - listitem [ref=f4e15]:
+            - link "Work" [ref=f4e16]:
+              - /url: "#work"
+          - listitem [ref=f4e17]:
+            - link "Studio" [ref=f4e18]:
+              - /url: "#about"
+          - listitem [ref=f4e19]:
+            - link "Services" [ref=f4e20]:
+              - /url: "#services"
+          - listitem [ref=f4e21]:
+            - link "Video" [ref=f4e22]:
+              - /url: "#video"
+          - listitem [ref=f4e23]:
+            - link "Studio Hire" [ref=f4e24]:
+              - /url: studio.html
+      - link "Let's Talk" [ref=f4e25]:
+        - /url: "#contact"
+  - generic [ref=f4e26]:
+    - generic [ref=f4e27]:
+      - generic:
+        - generic:
+          - heading "M o m e n t s , h e l d a l i t t l e l o n g e r ." [level=1]:
+            - generic:
+              - generic: M
+              - generic: o
+              - generic: m
+              - generic: e
+              - generic: "n"
+              - generic: t
+              - generic: s
+              - generic: ","
+            - generic:
+              - generic: h
+              - generic: e
+              - generic: l
+              - generic: d
+            - generic: a
+            - generic:
+              - generic: l
+              - generic: i
+              - generic: t
+              - generic: t
+              - generic: l
+              - generic: e
+            - generic:
+              - generic: l
+              - generic: o
+              - generic: "n"
+              - generic: g
+              - generic: e
+              - generic: r
+              - generic: .
+          - link "Start a Project →" [ref=f4e28]:
+            - /url: "#contact"
+            - text: Start a Project
+            - generic [ref=f4e29]: →
+        - generic:
+          - generic: Hold to ✦ blast Move to ⚡ bend the lines
+          - generic:
+            - generic:
+              - generic: Est. 2016
+              - generic: 9+ yearsbehind the lens
+            - paragraph: Weddings, portraits, product, events, commercials and film — shot for clarity, patience and feeling.
+      - generic [ref=f4e30]: ↓
+    - generic [ref=f4e31]:
+      - generic [ref=f4e32]: About
+      - paragraph [ref=f4e33]:
+        - generic [ref=f4e34]: Imora
+        - generic [ref=f4e35]: is
+        - generic [ref=f4e36]: an
+        - generic [ref=f4e37]: independent
+        - generic [ref=f4e38]: photography
+        - generic [ref=f4e39]: studio
+        - generic [ref=f4e40]: making
+        - generic [ref=f4e41]: images
+        - generic [ref=f4e42]: that
+        - generic [ref=f4e43]: hold
+        - generic [ref=f4e44]: their
+        - generic [ref=f4e45]: weight
+        - generic [ref=f4e46]: —
+        - generic [ref=f4e47]: through
+        - generic [ref=f4e48]: patience,
+        - generic [ref=f4e49]: light,
+        - generic [ref=f4e50]: and
+        - generic [ref=f4e51]: restraint.
+    - generic [ref=f4e52]:
+      - generic [ref=f4e53]: +
+      - generic [ref=f4e55]:
+        - heading "We shoot for permanence. Light first, patience always, edited to last." [level=4] [ref=f4e57]: We shoot for permanence.Light first, patience always,edited to last.
+        - generic [ref=f4e58]:
+          - paragraph [ref=f4e59]: Our aim is to make photographs that still mean something in twenty years — honest, unhurried, and made for the people in them.
+          - link "More about us →" [ref=f4e60]:
+            - /url: "#about"
+            - text: More about us
+            - generic [ref=f4e61]: →
+    - generic [ref=f4e62]:
+      - generic [ref=f4e63]: Focused vision.Measured execution.
+      - generic [ref=f4e64]:
+        - generic [ref=f4e65]:
+          - text: Observe
+          - generic [ref=f4e66]: +
+          - text: Compose
+          - generic [ref=f4e67]: +
+          - text: Remember
+          - generic [ref=f4e68]: +
+        - generic [ref=f4e69]:
+          - text: Observe
+          - generic [ref=f4e70]: +
+          - text: Compose
+          - generic [ref=f4e71]: +
+          - text: Remember
+          - generic [ref=f4e72]: +
+      - generic [ref=f4e73]: ✦ From fleeting to permanent.
+  - generic [ref=f4e74]:
+    - generic [ref=f4e77]:
+      - emphasis [ref=f4e78]: Wedding
+      - text: Imora
+      - emphasis [ref=f4e79]: Portrait
+      - text: Imora
+      - emphasis [ref=f4e80]: Product
+      - text: Imora
+      - emphasis [ref=f4e81]: Event
+      - text: Imora
+      - emphasis [ref=f4e82]: Commercial
+      - text: Imora
+      - emphasis [ref=f4e83]: Video
+      - text: Imora
+      - emphasis [ref=f4e84]: Wedding
+      - text: Imora
+      - emphasis [ref=f4e85]: Portrait
+      - text: Imora
+      - emphasis [ref=f4e86]: Product
+      - text: Imora
+      - emphasis [ref=f4e87]: Event
+      - text: Imora
+      - emphasis [ref=f4e88]: Commercial
+      - text: Imora
+      - emphasis [ref=f4e89]: Video
+      - text: Imora
+    - generic [ref=f4e91]:
+      - img "Photographer at work" [ref=f4e93]
+      - generic [ref=f4e94]:
+        - generic [ref=f4e95]: The Studio
+        - heading "We photograph the moments people go back to." [level=2] [ref=f4e96]
+        - paragraph [ref=f4e97]: Imora is an independent studio working across weddings, portraits, product, events, commercial work and film. Every project starts the same way — by listening, then looking for the frame that says the most with the least.
+        - paragraph [ref=f4e98]: "No two shoots look alike, but every one carries the same restraint: natural light where we can get it, honest composition, and a final edit that feels like memory rather than performance."
+        - generic [ref=f4e99]:
+          - generic [ref=f4e100]:
+            - heading "9+" [level=3] [ref=f4e101]
+            - text: Years Shooting
+          - generic [ref=f4e102]:
+            - heading "420+" [level=3] [ref=f4e103]
+            - text: Projects Delivered
+          - generic [ref=f4e104]:
+            - heading "30+" [level=3] [ref=f4e105]
+            - text: Cities Covered
+    - generic [ref=f4e107]:
+      - generic [ref=f4e108]:
+        - generic [ref=f4e109]:
+          - generic [ref=f4e110]: What We Shoot
+          - heading "Six services, one eye for the honest frame." [level=2] [ref=f4e111]:
+            - generic [ref=f4e112]: Six
+            - generic [ref=f4e114]: services,
+            - generic [ref=f4e116]: one
+            - generic [ref=f4e118]: eye
+            - generic [ref=f4e120]: for
+            - generic [ref=f4e122]: the
+            - generic [ref=f4e124]: honest
+            - generic [ref=f4e126]: frame.
+        - paragraph [ref=f4e128]: From full wedding days and intimate portrait sessions to product sets, live events, commercial campaigns and motion.
+      - generic [ref=f4e129]:
+        - generic [ref=f4e130] [cursor=pointer]:
+          - img "Wedding photography" [ref=f4e131]
+          - generic [ref=f4e132]:
+            - generic [ref=f4e133]: "01"
+            - heading "Wedding" [level=3] [ref=f4e134]
+        - generic [ref=f4e135] [cursor=pointer]:
+          - img "Portrait photography" [ref=f4e136]
+          - generic [ref=f4e137]:
+            - generic [ref=f4e138]: "02"
+            - heading "Portrait" [level=3] [ref=f4e139]
+        - generic [ref=f4e140] [cursor=pointer]:
+          - img "Product photography" [ref=f4e141]
+          - generic [ref=f4e142]:
+            - generic [ref=f4e143]: "03"
+            - heading "Product" [level=3] [ref=f4e144]
+        - generic [ref=f4e145] [cursor=pointer]:
+          - img "Event photography" [ref=f4e146]
+          - generic [ref=f4e147]:
+            - generic [ref=f4e148]: "04"
+            - heading "Event" [level=3] [ref=f4e149]
+        - generic [ref=f4e150] [cursor=pointer]:
+          - img "Commercial photography" [ref=f4e151]
+          - generic [ref=f4e152]:
+            - generic [ref=f4e153]: "05"
+            - heading "Commercial" [level=3] [ref=f4e154]
+        - generic [ref=f4e155] [cursor=pointer]:
+          - img "Videography" [ref=f4e156]
+          - generic [ref=f4e157]:
+            - generic [ref=f4e158]: "06"
+            - heading "Videography" [level=3] [ref=f4e159]
+    - generic [ref=f4e160]:
+      - generic [ref=f4e161]:
+        - heading "Key facts" [level=2] [ref=f4e162]
+        - paragraph [ref=f4e163]: A snapshot of ourexperience and impact.
+      - generic [ref=f4e164]:
+        - generic [ref=f4e165]:
+          - img "Awards" [ref=f4e167]
+          - generic [ref=f4e168]: Featured & Awards
+          - generic [ref=f4e169]:
+            - paragraph [ref=f4e170]: Featured on top photography platforms worldwide.
+            - generic [ref=f4e171]:
+              - text: "50"
+              - superscript [ref=f4e172]: +
+        - generic [ref=f4e173]:
+          - generic [ref=f4e174]: Shoots Completed
+          - generic [ref=f4e175]:
+            - text: 1.5K
+            - superscript [ref=f4e176]: +
+          - generic [ref=f4e177]: 90% of our clients book us again within the year.
+        - generic [ref=f4e178]:
+          - img "Team" [ref=f4e180]
+          - generic [ref=f4e181]: Our Team
+          - generic [ref=f4e182]:
+            - paragraph [ref=f4e183]: Different eyes.One standard.
+            - generic [ref=f4e185]:
+              - text: "20"
+              - superscript [ref=f4e186]: +
+      - generic [ref=f4e187]:
+        - text: Trusted By
+        - generic [ref=f4e188]:
+          - generic [ref=f4e189]: Lumen
+          - generic [ref=f4e190]: Vestra
+          - generic [ref=f4e191]: Northbound
+          - generic [ref=f4e192]: Atelier 9
+          - generic [ref=f4e193]: Solace
+    - generic [ref=f4e196]:
+      - generic [ref=f4e197]:
+        - heading "Selected work & explorations" [level=2] [ref=f4e198]: Selected work& explorations
+        - link "View all projects →" [ref=f4e199]:
+          - /url: "#"
+          - text: View all projects
+          - generic [ref=f4e200]: →
+      - generic [ref=f4e201]:
+        - figure [ref=f4e202]:
+          - img "Wedding story" [ref=f4e203]
+        - heading "The Mehta Wedding" [level=3] [ref=f4e204]
+        - generic [ref=f4e205]:
+          - paragraph [ref=f4e206]: Two days in Udaipur, shot as one continuous story.
+          - link "Explore project →" [ref=f4e207]:
+            - /url: "#"
+            - text: Explore project
+            - generic [ref=f4e208]: →
+      - generic [ref=f4e209]:
+        - figure [ref=f4e210]:
+          - img "Product campaign" [ref=f4e211]
+        - heading "Studio Nine" [level=3] [ref=f4e212]
+        - generic [ref=f4e213]:
+          - paragraph [ref=f4e214]: A product campaign built on hard light and clean edges.
+          - link "Explore project →" [ref=f4e215]:
+            - /url: "#"
+            - text: Explore project
+            - generic [ref=f4e216]: →
+      - generic [ref=f4e217]:
+        - figure [ref=f4e218]:
+          - img "Travel editorial" [ref=f4e219]
+        - heading "Northbound" [level=3] [ref=f4e220]
+        - generic [ref=f4e221]:
+          - paragraph [ref=f4e222]: Six weeks on the road, shot for a travel publication.
+          - link "Explore project →" [ref=f4e223]:
+            - /url: "#"
+            - text: Explore project
+            - generic [ref=f4e224]: →
+      - generic [ref=f4e225]:
+        - figure [ref=f4e226]:
+          - img "Portrait series" [ref=f4e227]
+        - heading "Quiet Portraits" [level=3] [ref=f4e228]
+        - generic [ref=f4e229]:
+          - paragraph [ref=f4e230]: An ongoing series on people photographed without a brief.
+          - link "Explore project →" [ref=f4e231]:
+            - /url: "#"
+            - text: Explore project
+            - generic [ref=f4e232]: →
+    - generic [ref=f4e234]:
+      - generic [ref=f4e236]:
+        - heading "Wedding 01" [level=4] [ref=f4e237]:
+          - text: Wedding
+          - generic [ref=f4e238]: "01"
+        - paragraph [ref=f4e239]: Full-day coverage from getting-ready to reception, delivered as one considered, editorial story.
+      - generic [ref=f4e240]:
+        - heading "Portrait 02" [level=4] [ref=f4e241]:
+          - text: Portrait
+          - generic [ref=f4e242]: "02"
+        - paragraph [ref=f4e243]: Individual, couple and family portraits shot on location or in studio, with a natural, unposed feel.
+      - generic [ref=f4e244]:
+        - heading "Product 03" [level=4] [ref=f4e245]:
+          - text: Product
+          - generic [ref=f4e246]: "03"
+        - paragraph [ref=f4e247]: Clean, considered product sets built on controlled light and honest colour.
+      - generic [ref=f4e248]:
+        - heading "Event 04" [level=4] [ref=f4e249]:
+          - text: Event
+          - generic [ref=f4e250]: "04"
+        - paragraph [ref=f4e251]: Live coverage of launches, functions and corporate days — unobtrusive, and delivered fast.
+      - generic [ref=f4e252]:
+        - heading "Commercial 05" [level=4] [ref=f4e253]:
+          - text: Commercial
+          - generic [ref=f4e254]: "05"
+        - paragraph [ref=f4e255]: Campaign and brand imagery made to work across print, social and everything in between.
+      - generic [ref=f4e256]:
+        - heading "Videography 06" [level=4] [ref=f4e257]:
+          - text: Videography
+          - generic [ref=f4e258]: "06"
+        - paragraph [ref=f4e259]: Films and motion work — wedding films, brand pieces and social cuts, shot and graded in house.
+      - generic:
+        - generic: Our Services
+        - generic:
+          - generic:
+            - generic: W
+            - generic: e
+            - generic: d
+            - generic: d
+            - generic: i
+            - generic: "n"
+            - generic: g
+          - generic:
+            - generic: P
+            - generic: o
+            - generic: r
+            - generic: t
+            - generic: r
+            - generic: a
+            - generic: i
+            - generic: t
+          - generic:
+            - generic: P
+            - generic: r
+            - generic: o
+            - generic: d
+            - generic: u
+            - generic: c
+            - generic: t
+          - generic:
+            - generic: E
+            - generic: v
+            - generic: e
+            - generic: "n"
+            - generic: t
+          - generic:
+            - generic: C
+            - generic: o
+            - generic: m
+            - generic: m
+            - generic: e
+            - generic: r
+            - generic: c
+            - generic: i
+            - generic: a
+            - generic: l
+          - generic:
+            - generic: V
+            - generic: i
+            - generic: d
+            - generic: e
+            - generic: o
+            - generic: g
+            - generic: r
+            - generic: a
+            - generic: p
+            - generic: h
+            - generic: "y"
+        - generic: ✦ Different disciplines. One standard of craft.
+        - link "View services →" [ref=f4e260]:
+          - /url: "#contact"
+          - text: View services
+          - generic [ref=f4e261]: →
+    - generic [ref=f4e263]:
+      - generic [ref=f4e264]:
+        - generic [ref=f4e265]:
+          - generic [ref=f4e266]: What's Included
+          - heading "Book Imora for your next shoot." [level=2] [ref=f4e267]:
+            - generic [ref=f4e268]: Book
+            - generic [ref=f4e270]: Imora
+            - generic [ref=f4e272]: for
+            - generic [ref=f4e274]: your
+            - generic [ref=f4e276]: next
+            - generic [ref=f4e278]: shoot.
+        - paragraph [ref=f4e280]: Every package is shaped around the story you're trying to tell — not the other way around.
+      - generic [ref=f4e281]:
+        - generic [ref=f4e282]:
+          - generic [ref=f4e283]: "01"
+          - heading "Wedding" [level=3] [ref=f4e284]
+          - paragraph [ref=f4e285]: Full-day coverage from getting-ready to reception, delivered as one continuous story.
+          - generic [ref=f4e286]: ↗
+        - generic [ref=f4e287]:
+          - generic [ref=f4e288]: "02"
+          - heading "Portrait" [level=3] [ref=f4e289]
+          - paragraph [ref=f4e290]: Individual, couple and family portraits on location or in studio, with a natural, unposed feel.
+          - generic [ref=f4e291]: ↗
+        - generic [ref=f4e292]:
+          - generic [ref=f4e293]: "03"
+          - heading "Product" [level=3] [ref=f4e294]
+          - paragraph [ref=f4e295]: Clean, considered product sets built on controlled light and honest colour.
+          - generic [ref=f4e296]: ↗
+        - generic [ref=f4e297]:
+          - generic [ref=f4e298]: "04"
+          - heading "Event" [level=3] [ref=f4e299]
+          - paragraph [ref=f4e300]: Launches, functions and corporate days covered unobtrusively and turned around fast.
+          - generic [ref=f4e301]: ↗
+        - generic [ref=f4e302]:
+          - generic [ref=f4e303]: "05"
+          - heading "Commercial" [level=3] [ref=f4e304]
+          - paragraph [ref=f4e305]: Campaign and brand imagery made to work across print, social and everything between.
+          - generic [ref=f4e306]: ↗
+        - generic [ref=f4e307]:
+          - generic [ref=f4e308]: "06"
+          - heading "Videography" [level=3] [ref=f4e309]
+          - paragraph [ref=f4e310]: Wedding films, brand pieces and social cuts — shot, edited and graded in house.
+          - generic [ref=f4e311]: ↗
+    - generic [ref=f4e313]:
+      - generic [ref=f4e315]:
+        - generic [ref=f4e316]: Kind Words
+        - heading "What clients say after the shoot." [level=2] [ref=f4e317]:
+          - generic [ref=f4e318]: What
+          - generic [ref=f4e320]: clients
+          - generic [ref=f4e322]: say
+          - generic [ref=f4e324]: after
+          - generic [ref=f4e326]: the
+          - generic [ref=f4e328]: shoot.
+      - generic [ref=f4e330]:
+        - generic [ref=f4e331]:
+          - paragraph [ref=f4e332]: "\"Imora photographed our wedding and somehow disappeared into the day — the photos feel like we're back there. Every frame is exactly how it felt.\""
+          - generic [ref=f4e333]:
+            - img "Client" [ref=f4e335]
+            - generic [ref=f4e336]:
+              - strong [ref=f4e337]: Ananya Mehta
+              - text: Wedding Client
+        - generic [ref=f4e338]:
+          - paragraph [ref=f4e339]: "\"Our product shoot needed to feel premium without trying too hard. Imora nailed the brief in one session — clean, considered, on brand.\""
+          - generic [ref=f4e340]:
+            - img "Client" [ref=f4e342]
+            - generic [ref=f4e343]:
+              - strong [ref=f4e344]: Rohan Kapoor
+              - text: Founder, Studio Nine
+        - generic [ref=f4e345]:
+          - paragraph [ref=f4e346]: "\"I've done a lot of portrait sessions and always felt stiff on camera. This was the first time I actually looked like myself in the photos.\""
+          - generic [ref=f4e347]:
+            - img "Client" [ref=f4e349]
+            - generic [ref=f4e350]:
+              - strong [ref=f4e351]: Priya Shah
+              - text: Portrait Client
+        - generic [ref=f4e352]:
+          - paragraph [ref=f4e353]: "\"Professional, unobtrusive, and fast to deliver. Our campaign shots have outperformed everything else we shot this year.\""
+          - generic [ref=f4e354]:
+            - img "Client" [ref=f4e356]
+            - generic [ref=f4e357]:
+              - strong [ref=f4e358]: Devika Rao
+              - text: Marketing Lead
+    - generic [ref=f4e360]:
+      - heading "Frames in" [level=2] [ref=f4e361]
+      - heading "Motion" [level=2] [ref=f4e362]
+      - paragraph [ref=f4e363]: Exploring light throughdaily practice.
+      - paragraph [ref=f4e364]: Tests, outtakes and frame studies shared openly as part of how we work.
+      - link "View the journal →" [ref=f4e365]:
+        - /url: "#"
+        - text: View the journal
+        - generic [ref=f4e366]: →
+      - generic:
+        - img "Frame study" [ref=f4e368]
+        - img "Frame study" [ref=f4e370]
+        - img "Frame study" [ref=f4e372]
+        - img "Frame study" [ref=f4e374]
+        - img "Frame study" [ref=f4e376]
+        - img "Frame study" [ref=f4e378]
+        - img "Frame study" [ref=f4e380]
+        - img "Frame study" [ref=f4e382]
+        - img "Frame study" [ref=f4e384]
+        - img "Frame study" [ref=f4e386]
+    - generic [ref=f4e387]:
+      - generic [ref=f4e388]:
+        - figure [ref=f4e389]:
+          - img "Frame study" [ref=f4e390]
+        - figure [ref=f4e391]:
+          - img "Frame study" [ref=f4e392]
+        - figure [ref=f4e393]:
+          - img "Frame study" [ref=f4e394]
+        - figure [ref=f4e395]:
+          - img "Frame study" [ref=f4e396]
+        - figure [ref=f4e397]:
+          - img "Frame study" [ref=f4e398]
+        - figure [ref=f4e399]:
+          - img "Frame study" [ref=f4e400]
+      - generic [ref=f4e401]:
+        - paragraph [ref=f4e402]: Tests, outtakes and frame studies shared openly as part of how we work.
+        - link "View the journal →" [ref=f4e403]:
+          - /url: "#"
+          - text: View the journal
+          - generic [ref=f4e404]: →
+    - generic [ref=f4e406]:
+      - generic [ref=f4e407]:
+        - generic [ref=f4e408]:
+          - generic [ref=f4e409]: Videography
+          - heading "Some moments need to move." [level=2] [ref=f4e410]
+        - paragraph [ref=f4e411]: The same eye, running at 24 frames a second. Shot, edited and graded in house, so the film and the photographs feel like one body of work.
+      - generic [ref=f4e412] [cursor=pointer]:
+        - img "Showreel" [ref=f4e414]
+        - button "Play showreel" [ref=f4e415]
+        - generic: Showreel — coming soon
+      - paragraph [ref=f4e416]: Placeholder. Drop your reel in and this plays inline — see README section 4.
+      - generic [ref=f4e417]:
+        - generic [ref=f4e418]:
+          - generic [ref=f4e419]: "01"
+          - heading "Wedding films" [level=3] [ref=f4e420]
+          - paragraph [ref=f4e421]: The day as it actually unfolded — vows, speeches and the quiet gaps between them, cut to breathe rather than to a trailer template.
+          - list [ref=f4e422]:
+            - listitem [ref=f4e423]: Highlight film
+            - listitem [ref=f4e424]: Full ceremony & speeches
+            - listitem [ref=f4e425]: Social cutdowns
+        - generic [ref=f4e426]:
+          - generic [ref=f4e427]: "02"
+          - heading "Brand films" [level=3] [ref=f4e428]
+          - paragraph [ref=f4e429]: Founder stories, product pieces and campaign films made to sit on a homepage and still hold up two years later.
+          - list [ref=f4e430]:
+            - listitem [ref=f4e431]: Concept & treatment
+            - listitem [ref=f4e432]: Direction & shoot
+            - listitem [ref=f4e433]: Edit, grade & sound
+        - generic [ref=f4e434]:
+          - generic [ref=f4e435]: "03"
+          - heading "Social reels" [level=3] [ref=f4e436]
+          - paragraph [ref=f4e437]: Vertical cuts built for the feed — shot properly rather than salvaged from footage framed for something else.
+          - list [ref=f4e438]:
+            - listitem [ref=f4e439]: 9:16 native capture
+            - listitem [ref=f4e440]: Captions & sound design
+            - listitem [ref=f4e441]: Batch delivery
+    - generic [ref=f4e443]:
+      - generic [ref=f4e444]: Let's Talk
+      - heading "Ready to make your next memory?" [level=2] [ref=f4e445]:
+        - generic [ref=f4e446]: Ready
+        - generic [ref=f4e448]: to
+        - generic [ref=f4e450]: make
+        - generic [ref=f4e452]: your
+        - generic [ref=f4e454]: next
+        - generic [ref=f4e456]: memory?
+      - link "Book on WhatsApp ↗" [ref=f4e458]:
+        - /url: https://wa.me/910000000000?text=Hi%20Imora%2C%20I%20would%20like%20to%20enquire%20about%20a%20shoot.
+    - contentinfo [ref=f4e459]:
+      - generic [ref=f4e460]:
+        - generic [ref=f4e461]:
+          - generic [ref=f4e462]:
+            - generic [ref=f4e463]: Imora
+            - paragraph [ref=f4e464]: Photography and film for weddings, portraits, product, events and brands — based in India, shooting worldwide.
+          - generic [ref=f4e465]:
+            - heading "Work" [level=4] [ref=f4e466]
+            - list [ref=f4e467]:
+              - listitem [ref=f4e468]:
+                - link "What We Shoot" [ref=f4e469]:
+                  - /url: "#work"
+              - listitem [ref=f4e470]:
+                - link "Services" [ref=f4e471]:
+                  - /url: "#services"
+              - listitem [ref=f4e472]:
+                - link "Videography" [ref=f4e473]:
+                  - /url: "#video"
+          - generic [ref=f4e474]:
+            - heading "Elsewhere" [level=4] [ref=f4e475]
+            - list [ref=f4e476]:
+              - listitem [ref=f4e477]:
+                - link "Studio Hire" [ref=f4e478]:
+                  - /url: studio.html
+              - listitem [ref=f4e479]:
+                - link "Home" [ref=f4e480]:
+                  - /url: index.html
+          - generic [ref=f4e481]:
+            - heading "Contact" [level=4] [ref=f4e482]
+            - list [ref=f4e483]:
+              - listitem [ref=f4e484]:
+                - link "hello@imora.studio" [ref=f4e485]:
+                  - /url: mailto:hello@imora.studio
+              - listitem [ref=f4e486]:
+                - link "+91 00000 00000" [ref=f4e487]:
+                  - /url: tel:+910000000000
+        - generic [ref=f4e488]:
+          - generic [ref=f4e489]: © 2026 Imora Photography Studio. All rights reserved.
+          - generic [ref=f4e490]: Photography & Videography

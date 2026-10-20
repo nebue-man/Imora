@@ -1,0 +1,201 @@
+- generic [active] [ref=f5e1]:
+  - generic: View
+  - link "Chat on WhatsApp" [ref=f5e2]:
+    - /url: https://wa.me/910000000000?text=Hi%20Imora%2C%20I%20would%20like%20to%20enquire%20about%20a%20shoot.
+  - banner [ref=f5e5]:
+    - link "Imora" [ref=f5e6]:
+      - /url: index.html
+    - generic [ref=f5e7]:
+      - navigation [ref=f5e8]:
+        - list [ref=f5e9]:
+          - listitem [ref=f5e10]:
+            - link "The Room" [ref=f5e11]:
+              - /url: "#room"
+          - listitem [ref=f5e12]:
+            - link "Setup" [ref=f5e13]:
+              - /url: "#setup"
+          - listitem [ref=f5e14]:
+            - link "Equipment" [ref=f5e15]:
+              - /url: "#kit"
+          - listitem [ref=f5e16]:
+            - link "Photo & Video" [ref=f5e17]:
+              - /url: photography.html
+      - link "Book the room" [ref=f5e18]:
+        - /url: "#contact"
+  - generic [ref=f5e19]:
+    - generic [ref=f5e20]:
+      - img "Podcast studio" [ref=f5e22]
+      - generic [ref=f5e23]:
+        - generic [ref=f5e24]: Opening Soon
+        - heading "The Imora podcast studio." [level=2] [ref=f5e26]
+        - paragraph [ref=f5e27]: We're building a fully treated room for recording and filming long-form conversation — multi-camera, broadcast audio, and lighting that makes people look like themselves. Register your interest and we'll hold you a slot for opening week.
+        - generic [ref=f5e28]:
+          - generic [ref=f5e29]:
+            - generic [ref=f5e30]: Multi-camera
+            - text: 4K video capture
+          - generic [ref=f5e31]:
+            - generic [ref=f5e32]: Broadcast audio
+            - text: Treated, low-noise room
+          - generic [ref=f5e33]:
+            - generic [ref=f5e34]: Up to 4 guests
+            - text: Round-table setup
+          - generic [ref=f5e35]:
+            - generic [ref=f5e36]: Same-week edit
+            - text: Video & audio delivered
+        - link "Register interest ↗" [ref=f5e37]:
+          - /url: https://wa.me/910000000000?text=Hi%20Imora%2C%20I%20would%20like%20to%20enquire%20about%20a%20shoot.
+    - generic [ref=f5e39]:
+      - generic [ref=f5e40]:
+        - generic [ref=f5e41]:
+          - generic [ref=f5e42]: 360° View
+          - heading "Stand in the middle and look around." [level=2] [ref=f5e43]
+        - paragraph [ref=f5e44]: Drag to turn, scroll to zoom. This is a scale model of the room we're building — desk, treatment, cameras and lighting in their real positions.
+      - generic [ref=f5e45]: Drag to look around
+      - generic [ref=f5e47]:
+        - button "Host seat" [ref=f5e48]
+        - button "Guest side" [ref=f5e49]
+        - button "Camera wall" [ref=f5e50]
+        - button "Full room" [ref=f5e51]
+    - generic [ref=f5e53]:
+      - generic [ref=f5e54]:
+        - generic [ref=f5e55]:
+          - generic [ref=f5e56]: Camera Setup
+          - heading "Three angles, cut live or in post." [level=2] [ref=f5e57]
+        - paragraph [ref=f5e58]: Every session records all three feeds separately, so the edit is never locked to one decision made on the day.
+      - generic [ref=f5e59]:
+        - generic [ref=f5e60]:
+          - generic [ref=f5e61]: Cam 01
+          - heading "Wide master" [level=3] [ref=f5e63]
+          - paragraph [ref=f5e64]: Locked-off two-shot covering the whole table. The safety angle — always rolling, always usable, and the frame the edit falls back to.
+        - generic [ref=f5e65]:
+          - generic [ref=f5e66]: Cam 02
+          - heading "Host close-up" [level=3] [ref=f5e68]
+          - paragraph [ref=f5e69]: Tighter portrait framing on the host chair, shallow depth of field, set slightly off-axis so eyelines stay natural rather than straight down the barrel.
+        - generic [ref=f5e70]:
+          - generic [ref=f5e71]: Cam 03
+          - heading "Guest close-up" [level=3] [ref=f5e73]
+          - paragraph [ref=f5e74]: Mirrored framing on the guest side. Matched lens and colour profile, so cuts between hosts and guests never jump.
+    - generic [ref=f5e77]:
+      - generic [ref=f5e78]:
+        - heading "3" [level=4] [ref=f5e79]
+        - generic [ref=f5e80]: Camera angles
+      - generic [ref=f5e81]:
+        - heading "4K" [level=4] [ref=f5e82]
+        - generic [ref=f5e83]: Recording resolution
+      - generic [ref=f5e84]:
+        - heading "4" [level=4] [ref=f5e85]
+        - generic [ref=f5e86]: Guests seated
+      - generic [ref=f5e87]:
+        - heading "7 days" [level=4] [ref=f5e88]
+        - generic [ref=f5e89]: Edit turnaround
+    - generic [ref=f5e91]:
+      - generic [ref=f5e92]:
+        - generic [ref=f5e93]:
+          - generic [ref=f5e94]: Equipment
+          - heading "What's in the room." [level=2] [ref=f5e95]
+        - paragraph [ref=f5e96]: Everything is included in the hire — you bring the conversation.
+      - generic [ref=f5e97]:
+        - generic [ref=f5e98]:
+          - generic [ref=f5e99]: Cameras
+          - generic [ref=f5e100]:
+            - text: Canon EOS 5D Mark IV
+            - generic [ref=f5e101]: Full-frame bodies on the wide master and both close-ups, matched for colour.
+          - generic [ref=f5e102]: ×3
+        - generic [ref=f5e103]:
+          - generic [ref=f5e104]: Lenses
+          - generic [ref=f5e105]:
+            - text: 24–70mm f/2.8 & 85mm f/1.8
+            - generic [ref=f5e106]: Zoom on the master for framing flexibility, primes on the close-ups for separation.
+          - generic [ref=f5e107]: ×3
+        - generic [ref=f5e108]:
+          - generic [ref=f5e109]: Audio
+          - generic [ref=f5e110]:
+            - text: Broadcast dynamic microphones on boom arms
+            - generic [ref=f5e111]: One per seat, each recorded to its own track so voices can be balanced separately.
+          - generic [ref=f5e112]: ×4
+        - generic [ref=f5e113]:
+          - generic [ref=f5e114]: Audio
+          - generic [ref=f5e115]:
+            - text: Multi-channel audio interface
+            - generic [ref=f5e116]: Isolated inputs with backup recording, so a single failure never costs the session.
+          - generic [ref=f5e117]: ×1
+        - generic [ref=f5e118]:
+          - generic [ref=f5e119]: Lighting
+          - generic [ref=f5e120]:
+            - text: Bi-colour LED key and fill panels
+            - generic [ref=f5e121]: Softboxed key per seat plus a hair light, dialled to suit skin tone rather than a preset.
+          - generic [ref=f5e122]: ×5
+        - generic [ref=f5e123]:
+          - generic [ref=f5e124]: Lighting
+          - generic [ref=f5e125]:
+            - text: RGB accent tubes
+            - generic [ref=f5e126]: Background colour on the treated wall — subtle by default, tunable to brand.
+          - generic [ref=f5e127]: ×4
+        - generic [ref=f5e128]:
+          - generic [ref=f5e129]: Treatment
+          - generic [ref=f5e130]:
+            - text: Broadband acoustic panels and bass traps
+            - generic [ref=f5e131]: Wall and corner treatment to kill flutter echo, so the room sounds controlled, not dead.
+          - generic [ref=f5e132]: Full wall
+        - generic [ref=f5e133]:
+          - generic [ref=f5e134]: Monitoring
+          - generic [ref=f5e135]:
+            - text: Closed-back headphones and a confidence monitor
+            - generic [ref=f5e136]: Everyone hears the mix as it's recorded; the host can see framing at all times.
+          - generic [ref=f5e137]: ×4
+        - generic [ref=f5e138]:
+          - generic [ref=f5e139]: Delivery
+          - generic [ref=f5e140]:
+            - text: Edited video and audio masters
+            - generic [ref=f5e141]: Cut episode, audio-only master, and vertical clips for social — delivered within the week.
+          - generic [ref=f5e142]: Per session
+    - generic [ref=f5e144]:
+      - generic [ref=f5e145]: Opening Soon
+      - heading "Hold a slot for opening week." [level=2] [ref=f5e146]:
+        - generic [ref=f5e147]: Hold
+        - generic [ref=f5e149]: a
+        - generic [ref=f5e151]: slot
+        - generic [ref=f5e153]: for
+        - generic [ref=f5e155]: opening
+        - generic [ref=f5e157]: week.
+      - link "Register interest ↗" [ref=f5e159]:
+        - /url: https://wa.me/910000000000?text=Hi%20Imora%2C%20I%20would%20like%20to%20enquire%20about%20a%20shoot.
+    - contentinfo [ref=f5e160]:
+      - generic [ref=f5e161]:
+        - generic [ref=f5e162]:
+          - generic [ref=f5e163]:
+            - generic [ref=f5e164]: Imora
+            - paragraph [ref=f5e165]: Studio services — a treated room for podcasts, interviews and long-form conversation. Based in India.
+          - generic [ref=f5e166]:
+            - heading "Studio" [level=4] [ref=f5e167]
+            - list [ref=f5e168]:
+              - listitem [ref=f5e169]:
+                - link "The Room" [ref=f5e170]:
+                  - /url: "#room"
+              - listitem [ref=f5e171]:
+                - link "Camera Setup" [ref=f5e172]:
+                  - /url: "#setup"
+              - listitem [ref=f5e173]:
+                - link "Equipment" [ref=f5e174]:
+                  - /url: "#kit"
+          - generic [ref=f5e175]:
+            - heading "Elsewhere" [level=4] [ref=f5e176]
+            - list [ref=f5e177]:
+              - listitem [ref=f5e178]:
+                - link "Photo & Video" [ref=f5e179]:
+                  - /url: photography.html
+              - listitem [ref=f5e180]:
+                - link "Home" [ref=f5e181]:
+                  - /url: index.html
+          - generic [ref=f5e182]:
+            - heading "Contact" [level=4] [ref=f5e183]
+            - list [ref=f5e184]:
+              - listitem [ref=f5e185]:
+                - link "hello@imora.studio" [ref=f5e186]:
+                  - /url: mailto:hello@imora.studio
+              - listitem [ref=f5e187]:
+                - link "+91 00000 00000" [ref=f5e188]:
+                  - /url: tel:+910000000000
+        - generic [ref=f5e189]:
+          - generic [ref=f5e190]: © 2026 Imora. All rights reserved.
+          - generic [ref=f5e191]: Studio services
