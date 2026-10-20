@@ -17,6 +17,11 @@ const HeroBg = dynamic(
   { ssr: false }
 )
 
+const StoneSection = dynamic(
+  () => import('@/components/photography/StoneSection'),
+  { ssr: false }
+)
+
 const navItems = [
   { label: 'Work', href: '#work' },
   { label: 'Studio', href: '#about' },
@@ -46,7 +51,8 @@ export default function PhotographyPage() {
         <ServicesGridSection />
         <KeyFactsSection />
         <HorizontalWorkSection />
-        {/* sections added in tasks 13-15 */}
+        <StoneSection />
+        {/* sections added in tasks 14-15 */}
       </div>
     </>
   )
