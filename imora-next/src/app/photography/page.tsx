@@ -4,6 +4,9 @@ import dynamic from 'next/dynamic'
 import Preloader from '@/components/ui/Preloader'
 import Header from '@/components/shared/Header'
 import HeroSection from '@/components/photography/HeroSection'
+import StatementSection from '@/components/photography/StatementSection'
+import ValuesSection from '@/components/photography/ValuesSection'
+import MarqueeSection from '@/components/photography/MarqueeSection'
 
 const HeroBg = dynamic(
   () => import('@/components/photography/HeroBg'),
@@ -29,10 +32,13 @@ export default function PhotographyPage() {
       <div className="stage" id="zone3d">
         <HeroBg preloaderDone={preloaderDone} />
         <HeroSection />
+        <StatementSection />
+        <ValuesSection />
+        <MarqueeSection />
       </div>
 
       <div className="page-solid">
-        {/* sections added in tasks 10-15 */}
+        {/* sections added in tasks 11-15 */}
       </div>
     </>
   )
