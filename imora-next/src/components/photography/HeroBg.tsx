@@ -308,10 +308,12 @@ export default function HeroBg({ preloaderDone }: HeroBgProps) {
     })
 
     // Render loop
-    const clock = new THREE.Clock()
+    let lastTime = performance.now()
     let t = 0
     const renderFn = () => {
-      const dt = Math.min(clock.getDelta(), 0.05)
+      const now = performance.now()
+      const dt = Math.min((now - lastTime) / 1000, 0.05)
+      lastTime = now
       t += dt
       const p = bgRef.current.progress
       const burst = Math.min(p / 0.34, 1)

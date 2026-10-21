@@ -14,6 +14,7 @@ export default function KeyFactsSection() {
               src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?auto=format&fit=crop&w=700&q=80"
               alt="Awards"
               fill
+              sizes="(max-width: 768px) 100vw, 33vw"
               style={{ objectFit: 'cover' }}
             />
           </div>
@@ -34,6 +35,7 @@ export default function KeyFactsSection() {
               src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=700&q=80"
               alt="Team"
               fill
+              sizes="(max-width: 768px) 100vw, 33vw"
               style={{ objectFit: 'cover' }}
             />
           </div>

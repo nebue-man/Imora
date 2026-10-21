@@ -76,7 +76,7 @@ export default function FramesInMotionSection() {
         ease: 'power3.out',
         scrollTrigger: { trigger: '.mgrid', start: 'top 78%' },
       })
-    }, sectionRef)
+    })
 
     return () => ctx.revert()
   }, [])

@@ -1,30 +1,25 @@
 'use client'
-import { useState } from 'react'
+import { useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import gsap from 'gsap'
 import Preloader from '@/components/ui/Preloader'
 
 export default function HomePage() {
-  const [ready, setReady] = useState(false)
+  const pickRef = useRef<HTMLDivElement>(null)
 
   const handlePreloaderDone = () => {
-    setReady(true)
-    import('gsap').then(({ default: gsap }) => {
-      gsap.to('.pick-panel', {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        stagger: 0.12,
-        ease: 'power3.out',
-      })
-    })
+    const panels = pickRef.current?.querySelectorAll<HTMLElement>('.pick-panel')
+    if (panels?.length) {
+      gsap.to(Array.from(panels), { opacity: 1, y: 0, duration: 1, stagger: 0.12, ease: 'power3.out' })
+    }
   }
 
   return (
     <>
       <Preloader onComplete={handlePreloaderDone} />
 
-      <div className="pick">
+      <div className="pick" ref={pickRef}>
         <div className="pick-mark">Imora</div>
 
         <Link
