@@ -126,6 +126,7 @@ export default function StoneSection() {
 
         // Load camera_lens.glb
         const gltfLoader = new GLTFLoader()
+        gltfLoader.register(() => ({ name: 'KHR_materials_pbrSpecularGlossiness' }))
         const draco = new DRACOLoader()
         draco.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/')
         gltfLoader.setDRACOLoader(draco)
