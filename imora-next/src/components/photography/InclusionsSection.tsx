@@ -4,12 +4,12 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 const services = [
-  { num: '01', title: 'Wedding',     desc: 'Full-day coverage from getting-ready to reception, delivered as one continuous story.' },
-  { num: '02', title: 'Portrait',    desc: 'Individual, couple and family portraits on location or in studio, with a natural, unposed feel.' },
-  { num: '03', title: 'Product',     desc: 'Clean, considered product sets built on controlled light and honest colour.' },
-  { num: '04', title: 'Event',       desc: 'Launches, functions and corporate days covered unobtrusively and turned around fast.' },
-  { num: '05', title: 'Commercial',  desc: 'Campaign and brand imagery made to work across print, social and everything between.' },
-  { num: '06', title: 'Videography', desc: 'Wedding films, brand pieces and social cuts — shot, edited and graded in house.' },
+  { title: 'Wedding',     desc: 'Full-day coverage from getting-ready to reception, delivered as one continuous story.' },
+  { title: 'Portrait',    desc: 'Individual, couple and family portraits on location or in studio, with a natural, unposed feel.' },
+  { title: 'Product',     desc: 'Clean, considered product sets built on controlled light and honest colour.' },
+  { title: 'Event',       desc: 'Launches, functions and corporate days covered unobtrusively and turned around fast.' },
+  { title: 'Commercial',  desc: 'Campaign and brand imagery made to work across print, social and everything between.' },
+  { title: 'Videography', desc: 'Wedding films, brand pieces and social cuts — shot, edited and graded in house.' },
 ]
 
 export default function InclusionsSection() {
@@ -35,15 +35,13 @@ export default function InclusionsSection() {
       <div className="container">
         <div className="section-head">
           <div>
-            <span className="eyebrow">What&rsquo;s Included</span>
             <h2>Book Imora for your next shoot.</h2>
           </div>
           <p>Every package is shaped around the story you&rsquo;re trying to tell — not the other way around.</p>
         </div>
         <div className="services-list">
           {services.map((s) => (
-            <div className="service-row" key={s.num}>
-              <span className="service-num">{s.num}</span>
+            <div className="service-row" key={s.title}>
               <h3>{s.title}</h3>
               <p>{s.desc}</p>
               <div className="service-arrow">↗</div>

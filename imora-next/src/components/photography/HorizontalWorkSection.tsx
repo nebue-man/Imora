@@ -43,7 +43,7 @@ export default function HorizontalWorkSection() {
       const inner = innerRef.current
       if (!section || !inner) return
 
-      // Only pin on desktop (hwork-inner has width:max-content + height:100vh on desktop)
+      // Only pin on desktop (hwork-inner has width:max-content + height:100svh on desktop)
       if (window.innerWidth < 768) return
 
       const totalWidth = inner.scrollWidth

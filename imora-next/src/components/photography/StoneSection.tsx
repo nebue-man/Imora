@@ -14,13 +14,13 @@ interface CharData {
   s: number
 }
 
-const SERVICES: { cls: string; title: string; num: string; desc: string }[] = [
-  { cls: 'c1', title: 'Wedding',    num: '01', desc: 'Full-day coverage from getting-ready to reception, delivered as one considered, editorial story.' },
-  { cls: 'c2', title: 'Portrait',   num: '02', desc: 'Individual, couple and family portraits shot on location or in studio, with a natural, unposed feel.' },
-  { cls: 'c3', title: 'Product',    num: '03', desc: 'Clean, considered product sets built on controlled light and honest colour.' },
-  { cls: 'c4', title: 'Event',      num: '04', desc: 'Live coverage of launches, functions and corporate days — unobtrusive, and delivered fast.' },
-  { cls: 'c5', title: 'Commercial', num: '05', desc: 'Campaign and brand imagery made to work across print, social and everything in between.' },
-  { cls: 'c6', title: 'Videography',num: '06', desc: 'Films and motion work — wedding films, brand pieces and social cuts, shot and graded in house.' },
+const SERVICES: { cls: string; title: string; desc: string }[] = [
+  { cls: 'c1', title: 'Wedding',     desc: 'Full-day coverage from getting-ready to reception, delivered as one considered, editorial story.' },
+  { cls: 'c2', title: 'Portrait',    desc: 'Individual, couple and family portraits shot on location or in studio, with a natural, unposed feel.' },
+  { cls: 'c3', title: 'Product',     desc: 'Clean, considered product sets built on controlled light and honest colour.' },
+  { cls: 'c4', title: 'Event',       desc: 'Live coverage of launches, functions and corporate days — unobtrusive, and delivered fast.' },
+  { cls: 'c5', title: 'Commercial',  desc: 'Campaign and brand imagery made to work across print, social and everything in between.' },
+  { cls: 'c6', title: 'Videography', desc: 'Films and motion work — wedding films, brand pieces and social cuts, shot and graded in house.' },
 ]
 
 const ST_LINES = ['Wedding', 'Portrait', 'Product', 'Event', 'Commercial', 'Videography']
@@ -286,7 +286,7 @@ export default function StoneSection() {
         <canvas className="stone-canvas" ref={canvasRef} />
         {SERVICES.map((s) => (
           <div className={`svc-card ${s.cls}`} key={s.cls}>
-            <h4>{s.title} <i>{s.num}</i></h4>
+            <h4>{s.title}</h4>
             <p>{s.desc}</p>
           </div>
         ))}

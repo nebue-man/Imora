@@ -37,7 +37,6 @@ export default function HomePage() {
             />
           </div>
           <div className="pick-in">
-            <span className="pick-num">01 — We shoot</span>
             <h2>Photography<br />&amp; Videography</h2>
             <p>
               Weddings, portraits, product, events, commercial work and film.
@@ -61,7 +60,6 @@ export default function HomePage() {
             />
           </div>
           <div className="pick-in">
-            <span className="pick-num">02 — We host</span>
             <h2>Studio<br />Services</h2>
             <p>
               A fully treated room for podcasts and long-form conversation —

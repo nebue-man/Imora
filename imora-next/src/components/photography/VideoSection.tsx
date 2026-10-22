@@ -2,19 +2,16 @@ import Image from 'next/image'
 
 const reelCards = [
   {
-    num: '01',
     title: 'Wedding films',
     desc: 'The day as it actually unfolded — vows, speeches and the quiet gaps between them, cut to breathe rather than to a trailer template.',
     items: ['Highlight film', 'Full ceremony & speeches', 'Social cutdowns'],
   },
   {
-    num: '02',
     title: 'Brand films',
     desc: 'Founder stories, product pieces and campaign films made to sit on a homepage and still hold up two years later.',
     items: ['Concept & treatment', 'Direction & shoot', 'Edit, grade & sound'],
   },
   {
-    num: '03',
     title: 'Social reels',
     desc: 'Vertical cuts built for the feed — shot properly rather than salvaged from footage framed for something else.',
     items: ['9:16 native capture', 'Captions & sound design', 'Batch delivery'],
@@ -27,7 +24,6 @@ export default function VideoSection() {
       <div className="container">
         <div className="reel-head">
           <div>
-            <span className="eyebrow">Videography</span>
             <h2>Some moments need to move.</h2>
           </div>
           <p>The same eye, running at 24 frames a second. Shot, edited and graded in house, so the film and the photographs feel like one body of work.</p>
@@ -48,8 +44,7 @@ export default function VideoSection() {
         <p className="reel-note">Placeholder. Drop your reel in and this plays inline — see README section 4.</p>
         <div className="reel-grid">
           {reelCards.map((c) => (
-            <div className="reel-card" key={c.num}>
-              <div className="num">{c.num}</div>
+            <div className="reel-card" key={c.title}>
               <h3>{c.title}</h3>
               <p>{c.desc}</p>
               <ul>

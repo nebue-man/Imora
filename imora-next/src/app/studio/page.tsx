@@ -36,7 +36,6 @@ export default function StudioPage() {
             />
           </div>
           <div className="pod-in">
-            <div className="pod-tag"><i></i> Opening Soon</div>
             <h2>The Imora podcast studio.</h2>
             <p>We&rsquo;re building a fully treated room for recording and filming long-form conversation —
                multi-camera, broadcast audio, and lighting that makes people look like themselves.
@@ -56,7 +55,6 @@ export default function StudioPage() {
           <div className="container">
             <div className="room-head">
               <div>
-                <span className="eyebrow">360° View</span>
                 <h2>Stand in the middle and look around.</h2>
               </div>
               <p>Drag to turn, scroll to zoom. This is a scale model of the room we&rsquo;re building —
@@ -77,7 +75,6 @@ export default function StudioPage() {
           <div className="container">
             <div className="room-head">
               <div>
-                <span className="eyebrow">Camera Setup</span>
                 <h2>Three angles, cut live or in post.</h2>
               </div>
               <p>Every session records all three feeds separately, so the edit is never locked
@@ -85,19 +82,19 @@ export default function StudioPage() {
             </div>
             <div className="setup-grid">
               <div className="cam-card">
-                <div className="num">Cam 01</div><div className="lens"></div>
+                <div className="lens"></div>
                 <h3>Wide master</h3>
                 <p>Locked-off two-shot covering the whole table. The safety angle — always rolling,
                    always usable, and the frame the edit falls back to.</p>
               </div>
               <div className="cam-card">
-                <div className="num">Cam 02</div><div className="lens"></div>
+                <div className="lens"></div>
                 <h3>Host close-up</h3>
                 <p>Tighter portrait framing on the host chair, shallow depth of field, set slightly
                    off-axis so eyelines stay natural rather than straight down the barrel.</p>
               </div>
               <div className="cam-card">
-                <div className="num">Cam 03</div><div className="lens"></div>
+                <div className="lens"></div>
                 <h3>Guest close-up</h3>
                 <p>Mirrored framing on the guest side. Matched lens and colour profile, so cuts
                    between hosts and guests never jump.</p>
@@ -123,7 +120,6 @@ export default function StudioPage() {
           <div className="container">
             <div className="room-head">
               <div>
-                <span className="eyebrow">Equipment</span>
                 <h2>What&rsquo;s in the room.</h2>
               </div>
               <p>Everything is included in the hire — you bring the conversation.</p>
@@ -153,7 +149,6 @@ export default function StudioPage() {
         {/* CTA */}
         <section id="contact" className="cta">
           <div className="container">
-            <span className="eyebrow">Opening Soon</span>
             <h2>Hold a slot for<br />opening week.</h2>
             <Link href={WA_HREF} className="btn wa-link" target="_blank" rel="noopener noreferrer">Register interest ↗</Link>
           </div>

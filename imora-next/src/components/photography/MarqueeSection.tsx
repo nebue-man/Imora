@@ -31,14 +31,14 @@ export default function MarqueeSection() {
     return () => ctx.revert()
   }, [])
 
-  const allItems = [...ITEMS, ...ITEMS] // doubled for seamless loop
+  const allItems = [...ITEMS, ...ITEMS] // doubled for continuous loop
 
   return (
     <section className="marquee">
       <div ref={trackRef} className="marquee-track">
         {allItems.map((item, i) => (
           <span key={i} className="marquee-item">
-            {item} <span className="marquee-dot">✦</span>
+            {item} <span className="marquee-dot">&middot;</span>
           </span>
         ))}
       </div>

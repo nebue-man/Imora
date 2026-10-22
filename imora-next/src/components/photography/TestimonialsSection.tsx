@@ -54,7 +54,6 @@ export default function TestimonialsSection() {
       <div className="container">
         <div className="section-head">
           <div>
-            <span className="eyebrow">Kind Words</span>
             <h2>What clients say after the shoot.</h2>
           </div>
         </div>

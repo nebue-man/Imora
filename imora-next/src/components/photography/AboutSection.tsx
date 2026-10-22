@@ -14,7 +14,6 @@ export default function AboutSection() {
           />
         </div>
         <div className="about-text">
-          <span className="eyebrow">The Studio</span>
           <h2 style={{ fontSize: 'clamp(28px,3.5vw,42px)', marginBottom: '24px' }}>
             We photograph the moments people go back to.
           </h2>

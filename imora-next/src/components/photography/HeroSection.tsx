@@ -12,8 +12,7 @@ export default function HeroSection() {
         </div>
         <div className="hero-foot">
           <div className="hero-hint">
-            Hold to <b>✦</b> blast<br />
-            Move to <b>⚡</b> bend the lines
+            Hold to burst — move to bend the light
           </div>
           <div className="hero-meta">
             <div className="hero-badge">
