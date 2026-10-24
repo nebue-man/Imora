@@ -64,13 +64,6 @@ export default function StoneSection() {
     let rock: THREE.Object3D | null = null
     let slab: THREE.Group | null = null
 
-    function supportsWebGL() {
-      try {
-        const c = document.createElement('canvas')
-        return !!(window.WebGLRenderingContext && (c.getContext('webgl') || c.getContext('experimental-webgl')))
-      } catch { return false }
-    }
-
     function setRockOpacity(obj: THREE.Object3D, v: number) {
       obj.traverse((o) => {
         const mesh = o as THREE.Mesh
@@ -86,18 +79,42 @@ export default function StoneSection() {
     let renderFn: (() => void) | null = null
     let resizeStone: (() => void) | null = null
 
-    if (canvas && supportsWebGL()) {
+    if (canvas) {
       try {
         renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true })
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+        renderer.toneMapping = THREE.ACESFilmicToneMapping
+        renderer.toneMappingExposure = 1.25
 
         const scene = new THREE.Scene()
-        const cam = new THREE.PerspectiveCamera(42, 1, 0.1, 100)
+        const cam = new THREE.PerspectiveCamera(38, 1, 0.1, 100)
         cam.position.set(0, 0, 7)
 
-        scene.add(new THREE.AmbientLight(0xffffff, 0.5))
-        const key = new THREE.DirectionalLight(0xffffff, 2.1); key.position.set(-4, 6, 5); scene.add(key)
-        const fill = new THREE.DirectionalLight(0x8fa6c4, 0.8); fill.position.set(5, -3, 2); scene.add(fill)
+        // Dramatic product-photography environment: bright white top, deep black floor
+        const envC = document.createElement('canvas')
+        envC.width = 32; envC.height = 256
+        const eg = envC.getContext('2d')!
+        const envGrad = eg.createLinearGradient(0, 0, 0, 256)
+        envGrad.addColorStop(0.00, '#ffffff')
+        envGrad.addColorStop(0.08, '#e8edf4')
+        envGrad.addColorStop(0.20, '#2a2a35')
+        envGrad.addColorStop(0.50, '#060608')
+        envGrad.addColorStop(1.00, '#0c0c10')
+        eg.fillStyle = envGrad; eg.fillRect(0, 0, 32, 256)
+        const envT = new THREE.CanvasTexture(envC)
+        envT.mapping = THREE.EquirectangularReflectionMapping
+        try {
+          const cubeRT = new THREE.WebGLCubeRenderTarget(256)
+          cubeRT.fromEquirectangularTexture(renderer, envT)
+          scene.environment = cubeRT.texture
+        } catch { /* ignore */ }
+
+        // Lights: warm key from upper-left, cool fill, blue rim from behind
+        scene.add(new THREE.AmbientLight(0xffffff, 0.22))
+        const key = new THREE.DirectionalLight(0xfff5e8, 3.8); key.position.set(-3, 9, 6); scene.add(key)
+        const fill = new THREE.DirectionalLight(0x8fa8c8, 0.55); fill.position.set(5, -2, 3); scene.add(fill)
+        const rim = new THREE.DirectionalLight(0x2060c0, 1.4); rim.position.set(0, -4, -6); scene.add(rim)
+        const front = new THREE.PointLight(0xffffff, 0.7, 18); front.position.set(0.5, 1.5, 6); scene.add(front)
 
         function noise(x: number, y: number, z: number) {
           return Math.sin(x * 2.1 + y * 1.3) * Math.cos(y * 1.9 - z * 2.2) * 0.5
@@ -124,9 +141,37 @@ export default function StoneSection() {
         scene.add(rockMesh)
         rock = rockMesh
 
-        // Load camera_lens.glb
+        // Load camera_lens.glb — polyfill KHR_materials_pbrSpecularGlossiness (removed in three.js r152+)
+        interface PbrSGParser {
+          json: { materials: Array<{ extensions?: Record<string, Record<string, unknown>> }> }
+          assignTexture(params: Record<string, unknown>, name: string, def: { index: number }): Promise<void>
+        }
+        class PbrSpecularGlossinessPlugin {
+          name = 'KHR_materials_pbrSpecularGlossiness'
+          parser: PbrSGParser
+          constructor(p: PbrSGParser) { this.parser = p }
+          getMaterialType(idx: number) {
+            return this.parser.json.materials[idx]?.extensions?.[this.name]
+              ? THREE.MeshStandardMaterial : null
+          }
+          extendMaterialParams(idx: number, params: Record<string, unknown>) {
+            const ext = this.parser.json.materials[idx]?.extensions?.[this.name] as {
+              diffuseFactor?: number[]; diffuseTexture?: { index: number }
+              specularFactor?: number[]; glossinessFactor?: number
+            } | undefined
+            if (!ext) return Promise.resolve()
+            const pending: Promise<void>[] = []
+            if (ext.diffuseTexture) pending.push(this.parser.assignTexture(params, 'map', ext.diffuseTexture))
+            if (ext.diffuseFactor) params.color = new THREE.Color(ext.diffuseFactor[0], ext.diffuseFactor[1], ext.diffuseFactor[2])
+            const gloss = ext.glossinessFactor ?? 1.0
+            const spec = ext.specularFactor ?? [1, 1, 1]
+            params.roughness = Math.max(0.22, 1.0 - gloss * 0.72)
+            params.metalness = Math.max(spec[0] as number, spec[1] as number, spec[2] as number) * 0.48
+            return Promise.all(pending)
+          }
+        }
         const gltfLoader = new GLTFLoader()
-        gltfLoader.register(() => ({ name: 'KHR_materials_pbrSpecularGlossiness' }))
+        gltfLoader.register((parser) => new PbrSpecularGlossinessPlugin(parser as unknown as PbrSGParser))
         const draco = new DRACOLoader()
         draco.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/')
         gltfLoader.setDRACOLoader(draco)
@@ -143,7 +188,7 @@ export default function StoneSection() {
             if (mesh.isMesh && mesh.material) {
               const mat = mesh.material as THREE.MeshStandardMaterial
               mat.transparent = true
-              mat.envMapIntensity = 1.2
+              mat.envMapIntensity = 1.8
               mat.needsUpdate = true
             }
           })
@@ -160,7 +205,7 @@ export default function StoneSection() {
         slab = new THREE.Group()
         const apMetal = new THREE.MeshStandardMaterial({ color: 0x1c1c20, roughness: 0.34, metalness: 0.92, transparent: true, opacity: 0 })
         const apBlade = new THREE.MeshStandardMaterial({ color: 0x2a2a30, roughness: 0.42, metalness: 0.78, transparent: true, opacity: 0, side: THREE.DoubleSide })
-        const apGlass = new THREE.MeshStandardMaterial({ color: 0x08111c, roughness: 0.05, metalness: 1.0, transparent: true, opacity: 0 })
+        const apGlass = new THREE.MeshStandardMaterial({ color: 0x08111c, roughness: 0.05, metalness: 1.0, transparent: true, opacity: 0, emissive: new THREE.Color(0x061828), emissiveIntensity: 0 })
 
         const apRing = new THREE.Mesh(new THREE.TorusGeometry(1.32, 0.13, 18, 64), apMetal); slab.add(apRing)
         const apRing2 = new THREE.Mesh(new THREE.TorusGeometry(1.05, 0.055, 14, 56), apMetal); apRing2.position.z = 0.07; slab.add(apRing2)
@@ -178,6 +223,7 @@ export default function StoneSection() {
         }
         slab.userData.blades = blades
         slab.userData.mats = [apMetal, apBlade, apGlass]
+        slab.userData.glass = apGlass
         scene.add(slab)
 
         resizeStone = () => {
@@ -194,34 +240,48 @@ export default function StoneSection() {
           const p = st.p
           t2 += 0.016
 
-          const drop = Math.min(p / 0.16, 1)
-          const ease = 1 - Math.pow(1 - drop, 3)
-          const y = 7 - ease * 7
-          const scale = 0.28 + ease * 0.72
+          // Quartic ease from y=12 — sharper deceleration = more dramatic arrival
+          const drop = Math.min(p / 0.18, 1)
+          const ease = 1 - Math.pow(1 - drop, 4)
+          const y = 12 - ease * 12
+          const scale = 0.20 + ease * 0.80
 
           const turn = Math.min(Math.max((p - 0.34) / 0.26, 0), 1)
           const turnE = turn * turn * (3 - 2 * turn)
 
+          // Breathing: subtle scale + z pulse once lens is facing forward
+          const settled = Math.max(0, (turnE - 0.55) / 0.45)
+          const breathe = 1 + settled * Math.sin(t2 * 0.85) * 0.018
+
           rock.position.y = y
-          rock.scale.setScalar(scale * (1 + p * 0.35))
+          rock.position.z = settled * Math.sin(t2 * 0.75) * 0.12
+          rock.scale.setScalar(scale * (1 + p * 0.30) * breathe)
           rock.rotation.x = 0.25 + p * 0.45 - turnE * 0.62
-          rock.rotation.y += 0.0032 * (1 - turnE)
+          rock.rotation.y += 0.0016 * (1 - turnE)
           rock.rotation.y *= (1 - turnE * 0.06)
           setRockOpacity(rock, 1)
           rock.visible = true
 
+          // Camera micro-drift once lens settles — handhold feel
+          cam.position.x = Math.sin(t2 * 0.14) * 0.20 * turnE
+          cam.position.y = Math.cos(t2 * 0.10) * 0.14 * turnE
+          cam.lookAt(0, 0, 0)
+
           if (slab) {
             const apOpen = Math.min(Math.max((p - 0.46) / 0.22, 0), 1)
-            slab.position.y = y * 0.35
-            slab.position.z = -0.9
-            slab.scale.setScalar(0.72 + turnE * 0.5 + p * 0.22)
+            slab.position.y = y * 0.10
+            slab.position.z = -4.0
+            slab.scale.setScalar(1.8 + turnE * 1.2 + p * 0.4)
             slab.rotation.z = turnE * 0.22
             slab.visible = turnE > 0.01
-            const fade = turnE * 0.9
+            const fade = turnE * 0.65
             ;(slab.userData.mats as THREE.MeshStandardMaterial[]).forEach((mt) => { mt.opacity = fade })
             ;(slab.userData.blades as THREE.Mesh[]).forEach((bl, i) => {
               bl.rotation.z = bl.userData.base + apOpen * 0.42 + Math.sin(t2 + i) * 0.012
             })
+            // Aperture glass glows when iris opens
+            const glassRef = slab.userData.glass as THREE.MeshStandardMaterial
+            if (glassRef) glassRef.emissiveIntensity = apOpen * 0.5
           }
 
           renderer!.render(scene, cam)
@@ -284,9 +344,9 @@ export default function StoneSection() {
     <section className="stone" id="services" ref={sectionRef}>
       <div className="stone-sticky" ref={stickyRef}>
         <canvas className="stone-canvas" ref={canvasRef} />
-        {SERVICES.map((s) => (
+        {SERVICES.map((s, i) => (
           <div className={`svc-card ${s.cls}`} key={s.cls}>
-            <h4>{s.title}</h4>
+            <h4>{s.title}<i>0{i + 1}</i></h4>
             <p>{s.desc}</p>
           </div>
         ))}

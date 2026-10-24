@@ -28,21 +28,16 @@ export default function HeroBg({ preloaderDone }: HeroBgProps) {
 
     gsap.registerPlugin(ScrollTrigger)
 
-    function supportsWebGL() {
-      try {
-        const c = document.createElement('canvas')
-        return !!(window.WebGLRenderingContext && (c.getContext('webgl') || c.getContext('experimental-webgl')))
-      } catch { return false }
-    }
-    if (!supportsWebGL()) return
-
     let renderer: THREE.WebGLRenderer
     try {
       renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true })
     } catch { return }
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    renderer.toneMapping = THREE.ACESFilmicToneMapping
+    renderer.toneMappingExposure = 1.15
 
     const scene = new THREE.Scene()
+    scene.background = new THREE.Color(0x08080a)
     const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 200)
     camera.position.set(0, 0, 9)
 
@@ -65,9 +60,9 @@ export default function HeroBg({ preloaderDone }: HeroBgProps) {
       scene.environment = cubeRT.texture
     } catch { /* ignore */ }
 
-    scene.add(new THREE.AmbientLight(0xffffff, 0.28))
-    const key = new THREE.DirectionalLight(0xffffff, 2.5); key.position.set(3, 6, 5); scene.add(key)
-    const rim = new THREE.DirectionalLight(0xe8703a, 1.3); rim.position.set(-5, -2, 3); scene.add(rim)
+    scene.add(new THREE.AmbientLight(0xffffff, 0.45))
+    const key = new THREE.DirectionalLight(0xffffff, 3.2); key.position.set(3, 6, 5); scene.add(key)
+    const rim = new THREE.DirectionalLight(0xe8703a, 0.9); rim.position.set(-5, -2, 3); scene.add(rim)
 
     const group = new THREE.Group()
     scene.add(group)
@@ -84,19 +79,47 @@ export default function HeroBg({ preloaderDone }: HeroBgProps) {
       drift: THREE.Vector3
       home: THREE.Vector3
       homeRot: THREE.Euler
+      delay: number
+      spinMult: number
+      mats: THREE.MeshStandardMaterial[]
       __proc?: boolean
     }
 
-    function shardData(unit = 1): Omit<ShardData, 'home' | 'homeRot'> {
+    function shardData(unit = 1): Omit<ShardData, 'home' | 'homeRot' | 'mats'> {
       return {
-        dir: new THREE.Vector3((Math.random() - 0.5) * 3.4 * unit, (Math.random() - 0.5) * 3.0 * unit, (Math.random() - 0.5) * 3.4 * unit),
+        // Smaller dir so pieces stay partially in-frame during the long fade window
+        dir: new THREE.Vector3((Math.random() - 0.5) * 1.6 * unit, (Math.random() - 0.5) * 1.4 * unit, (Math.random() - 0.5) * 2.2 * unit),
         spin: new THREE.Vector3((Math.random() - 0.5) * 4, (Math.random() - 0.5) * 4, (Math.random() - 0.5) * 4),
-        drift: new THREE.Vector3((Math.random() - 0.5) * 0.5 * unit, (Math.random() - 0.5) * 0.35 * unit, (Math.random() - 0.5) * 0.5 * unit),
+        drift: new THREE.Vector3((Math.random() - 0.5) * 0.4 * unit, (Math.random() - 0.5) * 0.28 * unit, (Math.random() - 0.5) * 0.4 * unit),
+        delay: Math.random() * 0.12,
+        spinMult: 0.4 + Math.random() * 1.4,
       }
     }
 
     function addShard(mesh: THREE.Object3D, unit = 1) {
-      const d: ShardData = { ...shardData(unit), home: mesh.position.clone(), homeRot: mesh.rotation.clone() }
+      // Clone materials per-shard so opacity can be animated independently
+      const meshObj = mesh as THREE.Mesh
+      const mats: THREE.MeshStandardMaterial[] = []
+      if (meshObj.isMesh) {
+        const rawMats = Array.isArray(meshObj.material) ? meshObj.material : (meshObj.material ? [meshObj.material] : [])
+        rawMats.forEach((mat) => {
+          const sm = mat as THREE.MeshStandardMaterial
+          if (sm.isMeshStandardMaterial) {
+            const c = sm.clone(); c.transparent = true; mats.push(c)
+          }
+        })
+        if (mats.length > 0) meshObj.material = mats.length === 1 ? mats[0] : mats
+      }
+      const d: ShardData = { ...shardData(unit), home: mesh.position.clone(), homeRot: mesh.rotation.clone(), mats }
+      // Radial bias in group-local space so scatter direction stays consistent
+      // as the group rotates. mesh.position is already in group-local space after
+      // group.attach (or is the set local position for procedural pieces).
+      const lp = mesh.position.clone()
+      if (lp.length() > 0.001) {
+        const dirLen = d.dir.length()
+        d.dir.lerp(lp.normalize().multiplyScalar(dirLen), 0.55)
+        d.dir.normalize().multiplyScalar(dirLen)
+      }
       mesh.userData = d
       if (!mesh.parent) group.add(mesh)
       shards.push(mesh)
@@ -105,7 +128,45 @@ export default function HeroBg({ preloaderDone }: HeroBgProps) {
     // GLB loader
     let modelLoaded = false
     const gltfLoader = new GLTFLoader()
-    gltfLoader.register(() => ({ name: 'KHR_materials_pbrSpecularGlossiness' }))
+
+    // Polyfill KHR_materials_pbrSpecularGlossiness (removed in three.js r152+).
+    // Loads the embedded diffuse texture as the color map and approximates
+    // metalness/roughness from the extension factors.
+    interface PbrSGParser {
+      json: { materials: Array<{ extensions?: Record<string, Record<string, unknown>> }> }
+      assignTexture(params: Record<string, unknown>, name: string, def: { index: number }): Promise<void>
+    }
+    class PbrSpecularGlossinessPlugin {
+      name = 'KHR_materials_pbrSpecularGlossiness'
+      parser: PbrSGParser
+      constructor(p: PbrSGParser) { this.parser = p }
+      getMaterialType(idx: number) {
+        return this.parser.json.materials[idx]?.extensions?.[this.name]
+          ? THREE.MeshStandardMaterial : null
+      }
+      extendMaterialParams(idx: number, params: Record<string, unknown>) {
+        const ext = this.parser.json.materials[idx]?.extensions?.[this.name] as {
+          diffuseFactor?: number[]
+          diffuseTexture?: { index: number }
+          specularFactor?: number[]
+          glossinessFactor?: number
+        } | undefined
+        if (!ext) return Promise.resolve()
+        const pending: Promise<void>[] = []
+        if (ext.diffuseTexture) {
+          pending.push(this.parser.assignTexture(params, 'map', ext.diffuseTexture))
+        }
+        if (ext.diffuseFactor) {
+          params.color = new THREE.Color(ext.diffuseFactor[0], ext.diffuseFactor[1], ext.diffuseFactor[2])
+        }
+        const gloss = ext.glossinessFactor ?? 1.0
+        const spec = ext.specularFactor ?? [1, 1, 1]
+        params.roughness = Math.max(0.22, 1.0 - gloss * 0.72)
+        params.metalness = Math.max(spec[0] as number, spec[1] as number, spec[2] as number) * 0.48
+        return Promise.all(pending)
+      }
+    }
+    gltfLoader.register((parser) => new PbrSpecularGlossinessPlugin(parser as unknown as PbrSGParser))
     const draco = new DRACOLoader()
     draco.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/')
     gltfLoader.setDRACOLoader(draco)
@@ -121,23 +182,32 @@ export default function HeroBg({ preloaderDone }: HeroBgProps) {
       const s = 2.6 / span
       model.scale.setScalar(s)
       model.position.set(-mid.x * s, -mid.y * s, -mid.z * s)
-      group.add(model)
-      // remove procedural shards
+      // Temporarily add to scene so world matrices are correct before flattening
+      scene.add(model)
+      model.updateWorldMatrix(true, true)
+      // Remove procedural placeholders
       const toRemove = shards.filter((m) => (m.userData as ShardData).__proc)
       toRemove.forEach((m) => { group.remove(m) })
       shards.splice(0, shards.length, ...shards.filter((m) => !(m.userData as ShardData).__proc))
-      // add GLB meshes as shards
-      const unit = 1 / s
-      model.traverse((o) => {
-        if ((o as THREE.Mesh).isMesh) {
-          const mesh = o as THREE.Mesh
-          if (mesh.material) {
-            (mesh.material as THREE.MeshStandardMaterial).envMapIntensity = 1.5;
-            (mesh.material as THREE.MeshStandardMaterial).needsUpdate = true
-          }
-          addShard(mesh, unit)
-        }
+      // Collect all meshes before reparenting so traversal is stable
+      const glbMeshes: THREE.Mesh[] = []
+      model.traverse((o) => { if ((o as THREE.Mesh).isMesh) glbMeshes.push(o as THREE.Mesh) })
+      // Flatten GLB hierarchy: detach each mesh from its parent node and attach
+      // directly to group. group.attach preserves world transform, so after this
+      // each mesh's local position/rotation equals its assembled-camera world
+      // position/rotation. The scatter animation then moves pieces in group space,
+      // which means the assembled camera shape fully breaks apart — no ghost hull.
+      glbMeshes.forEach((mesh) => {
+        const rawMats = Array.isArray(mesh.material) ? mesh.material : (mesh.material ? [mesh.material] : [])
+        rawMats.forEach((mat) => {
+          const m = mat as THREE.MeshStandardMaterial
+          if (m.isMeshStandardMaterial) { m.envMapIntensity = 1.8; m.needsUpdate = true }
+        })
+        group.attach(mesh)   // reparent preserving world transform
+        addShard(mesh, 1)    // unit=1: group space = world space, dir magnitudes correct
       })
+      // Model hierarchy is now empty; remove from scene
+      scene.remove(model)
     }, undefined, (err) => {
       console.error('[imora] could not load camera model — showing placeholder.', err)
     })
@@ -317,32 +387,48 @@ export default function HeroBg({ preloaderDone }: HeroBgProps) {
       lastTime = now
       t += dt
       const p = bgRef.current.progress
+      // bSmooth kept for ghost/streak visibility scaling
       const burst = Math.min(p / 0.34, 1)
       const bSmooth = burst * burst * (3 - 2 * burst)
-      const drift = Math.max(0, p - 0.34) * 5.5
-      const spread = bSmooth * 2.4 + drift + bgRef.current.blast * 2.2 + bgRef.current.intro * 1.6
+      // Immediate sharp break: camera shatters the moment scroll begins.
+      // snapBreak jumps to ~1.6 in the first 12% of the zone (ease-out).
+      // longDrift then carries pieces slowly across the full remaining scroll — 3+ viewport heights.
+      const breakPhase = Math.min(p / 0.12, 1)
+      const snapBreak = (1 - Math.pow(1 - breakPhase, 2.5)) * 1.6
+      const spread = snapBreak + p * 7.0 + bgRef.current.blast * 2.2 + bgRef.current.intro * 1.6
 
       group.rotation.y += 0.0038
       group.rotation.x += (pointerRef.current.y * 0.20 - group.rotation.x) * 0.04
       group.rotation.z = Math.sin(t * 0.3) * 0.05 + pointerRef.current.x * 0.07
-      group.position.y = -p * 1.4
 
       shards.forEach((m) => {
         const d = m.userData as ShardData
+        // Stagger: each shard waits its own delay before joining the break
+        const localSpread = Math.max(0, spread - d.delay)
         m.position.copy(d.home)
-          .addScaledVector(d.dir, spread)
-          .addScaledVector(d.drift, Math.sin(t * 0.4 + d.home.y) * spread * 0.4)
+          .addScaledVector(d.dir, localSpread)
+          .addScaledVector(d.drift, Math.sin(t * 0.4 + d.home.y) * localSpread * 0.4)
+        // parabolic gravity — pieces arc and fall downward as they scatter
+        m.position.y -= localSpread * localSpread * 0.14
+        // Per-shard spin personality: deceleration shape is shared but scale varies
+        const localSpin = (localSpread / (1 + localSpread * 0.38)) * d.spinMult
         m.rotation.set(
-          d.homeRot.x + d.spin.x * spread * 0.45,
-          d.homeRot.y + d.spin.y * spread * 0.45,
-          d.homeRot.z + d.spin.z * spread * 0.45,
+          d.homeRot.x + d.spin.x * localSpin * 0.45,
+          d.homeRot.y + d.spin.y * localSpin * 0.45,
+          d.homeRot.z + d.spin.z * localSpin * 0.45,
         )
+        // Fade out: pieces stay fully opaque through the break and early drift,
+        // then slowly dissolve across the long scroll burn (spread 3.5 → 8.0)
+        if (d.mats.length > 0) {
+          const opacity = Math.max(0, 1 - Math.max(0, localSpread - 3.5) * 0.222)
+          d.mats.forEach((mat) => { mat.opacity = opacity })
+        }
       })
 
       ghosts.forEach((g, i) => {
         g.rotation.y += g.userData.speed
         g.rotation.x = Math.sin(t * 0.12 + i) * 0.14
-        g.position.y = Math.sin(t * 0.16 + i * 2) * 0.5 - p * 2.2
+        g.position.y = Math.sin(t * 0.16 + i * 2) * 0.5
         g.children.forEach((ln) => {
           ((ln as THREE.LineSegments).material as THREE.LineBasicMaterial).opacity = (0.10 - i * 0.022) * (0.35 + bSmooth * 0.65)
         })
@@ -357,7 +443,7 @@ export default function HeroBg({ preloaderDone }: HeroBgProps) {
 
       camera.position.x += (pointerRef.current.x * 0.75 - camera.position.x) * 0.04
       camera.position.y += (pointerRef.current.y * 0.5 - camera.position.y) * 0.04
-      camera.lookAt(0, group.position.y * 0.35, 0)
+      camera.lookAt(0, 0, 0)
 
       canvas!.style.opacity = String(1 - Math.max(0, (p - 0.86) / 0.14))
       renderer.render(scene, camera)
