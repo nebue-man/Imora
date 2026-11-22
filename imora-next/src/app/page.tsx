@@ -1,7 +1,7 @@
 'use client'
 import Preloader from '@/components/ui/Preloader'
 import HomeHeader from '@/components/home/HomeHeader'
-import HeroSlideshow from '@/components/home/HeroSlideshow'
+import HeroGallery from '@/components/home/HeroGallery'
 import Footer from '@/components/shared/Footer'
 
 export default function HomePage() {
@@ -12,7 +12,7 @@ export default function HomePage() {
       <HomeHeader />
 
       <main>
-        <HeroSlideshow />
+        <HeroGallery />
       </main>
 
       <Footer
